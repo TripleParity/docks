@@ -6,6 +6,7 @@
 \usepackage{hyperref}
 \usepackage{float}
 \usepackage{fancyvrb,newverbs,xcolor}
+\usepackage{hyperref}
 
 \usepackage{listings}
 \lstset{
@@ -35,10 +36,10 @@
 }
 
 %opening
-\title{User Manual for Docks\\
-\large{docks-ui 0.0.2}}
+\title{User Manual for Docks}
 
-\author{TripleParity}
+\author{Team: TripleParity\\
+Client: Compiax}
 \date{}
 
 \begin{document}
@@ -52,21 +53,45 @@
 
 \tableofcontents
 
+\pagebreak
+
 \section{System Overview}
-Docks is a system to manage a Docker Swarm using a Web User Interface. It provides a visual representation of a Docker Swarm, allowing users to manage the Swarm without using the Command Line Interface.
+% TODO(egeldenhuys): How much of Docker will we explain?
 
-Docks is useful if you want to see a quick overview of the Swarm and all the running containers. Containers can be started and stopped with the click of a button.
+This document assumes knowledge of how Docker works. For more information
+read:
+\begin{itemize}
+	\tightlist
+	\item \href{https://docs.docker.com/engine/}{About Docker Engine}
+	\item \href{https://docs.docker.com/engine/docker-overview/}{Docker Overview}
+	\item \href{https://docs.docker.com/engine/swarm/key-concepts/}{Swarm Mode Key Concepts}
+\end{itemize}
 
-System Administrators will be able to effectively manage their Swarm and scale services as required. Docks also appeals to users wishing to manage their services remotely from a web browser.
+Docks provides a web interface for managing a Docker Swarm.
+Along with an easy to use interface Docks provides security by only
+allowing registered users to manage Docker. Docks exposes the same
+functionality as the Docker Command Line Interface.
+
+% TODO(egeldenhuys): Guest users
+Docks allows developers and system administrators to manage the
+deployment of applications without requiring SSH access to a server.
+
 
 \section{System Configuration}
-Docks consists of two subsystems; the Docks API server and the Docks UI.
+Docks consists of two subsystems:
+\begin{itemize}
+	\item Docks Web Interface
+	\item Docks API Server
+\end{itemize}
 
-The Docks API server has to be on a Manager Node in the Docker Swarm to be able to manage other nodes. The Docks UI also has to be served from the same Domain Name as the Docks API, in most cases it will also by deployed on the Manager Node.
+The web interface can be served from any static file server such as GitHub pages
+and will communicate with the Docks API server through the web browser.
+
+The Docks API server is deployed on a Manager Node in the Docker Swarm
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.8]{deployment_diagram.png}
+	\includegraphics[scale=0.6]{deployment_diagram.png}
 	\caption{Docks Deployment Diagram}
 \end{figure}
 
@@ -115,12 +140,48 @@ The Docks API server has to be on a Manager Node in the Docker Swarm to be able 
 	  \end{itemize}
 	\end{enumerate}
 
+\subsection{Configuration}
+% I am not sure where this section should go
+
+\subsubsection{Docks Web Interface}
+The following parameters can be configured in the \texttt{docker-compose.yml} file
+
+% NOTE: cannot use _ in \texttt: escape it
+\begin{itemize}
+	\tightlist
+	\item \texttt{DOCKS\_API\_ADDRESS} - The address of the Docks API server
+	\item \texttt{ports} - The ports to listen on
+\end{itemize}
+
+\subsubsection{Docks API}
+The following parameters can be configured in the \texttt{docker-compose.yml} file
+
+\begin{itemize}
+	\tightlist
+	\item \texttt{JWT\_SECRET} - The secret key used during authentication requests
+	\item \texttt{DOCKS\_DB\_ADDRESS} - The address of the database
+	\item \texttt{POSTGRES\_PASSWORD} - The password for the \texttt{postgres} database user
+	\item \texttt{ports} - The ports to listen on
+\end{itemize}
 
 \section{Getting Started}
 The web interface will be available at \url{http://127.0.0.1:4200} after following the Installation instructions.
-All required setup should be automatically done when starting the Docks stack.
+The database will automatically be initialized and the default user will
+be created:
+\begin{itemize}
+	\tightlist
+	\item Username: \texttt{admin}
+	\item Password: \texttt{admin}
+\end{itemize}
 
-The home screen should display when visiting \url{http://127.0.0.1:4200}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.4]{login.png}
+	\caption{Login Page}
+\end{figure}
+
+It is strongly recommended to change the password as soon as possible.
+This will be explained further in the User Management Section below.
 
 \begin{figure}[H]
 	\centering
@@ -130,26 +191,20 @@ The home screen should display when visiting \url{http://127.0.0.1:4200}
 
 \section{Using the System}
 
-\subsection{Views}
-All information can be viewed in two ways, as a list or as cards. The list view is more compact but provides less
-information initially. This is useful for seeing a summary of all running resources. Card view provides more detail
-without extra information and therefore fewer resources can be seen at a time. Card view is useful if you
-need to see more detailed information at a quick glance.
 
 \subsection{Tasks}
-Tasks are the containers associated with a running service. On the task list view you can see the task ID and it's state. Upon clicking on a task in the list it will expand to also show the node ID the task is running on, the image the task was created from, the date created and the date update.
+A Service consists of Tasks. Tasks can only be viewed - they are managed by Docker
+as part of services
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.4]{task_list.png}
-	\caption{Task list view, with one task expanded}
-\end{figure}
-
+\subsubsection{Viewing Tasks}
 The card view displays the following information:
 \begin{itemize}
 	\tightlist
 	\item ID of the task
-	\item State of the task. Indicated by the circle and card outline colour. Green means the task is running, red indicating it has stopped
+	\item State of the task. 
+	Indicated by the circle and card outline colour. 
+	Green means the task is running, 
+	red indicating it has stopped and blue indicating it is preparing
 	\item Node ID the task is running on
 	\item Last Updated
 \end{itemize}
@@ -157,143 +212,84 @@ The card view displays the following information:
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{task_card_view.png}
-	\caption{Task card view}
+	\caption{Task Card View}
 \end{figure}
 
-Cards can be clicked on to bring up a modal dialog to display the log for that service.
+\subsubsection{View Task Logs}
+From the task card view, a task can be clicked to bring up a modal for viewing
+the log associated with the task.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{task_card_modal.png}
-	\caption{Task modal after clicking on card. Displays task log}
+	\caption{Task Card Modal}
 \end{figure}
 
 \subsection{Services}
-
-The services list view displays a list of services, which can be clicked on for an expanded view:
-\begin{itemize}
-	\tightlist
-	\item Image the service is created from
-	\item The mode of the service. \texttt{vip} - Virtual IP, the service is assigned an IP address and will distribute the requests to the replicated tasks.
-	\item The number of replicas of the service. Each replica represents a task in the swarm.
-	\item Date crated
-	\item Last updated
-\end{itemize}
+The service list view provides a sortable and searchable table for deployed services.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{service_list.png}
-	\caption{Task list view, with one task expanded}
+	\includegraphics[scale=0.4]{service_list_view.png}
+	\caption{Service List View}
 \end{figure}
-
-The services card view will display the following information:
-\begin{itemize}
-	\tightlist
-	\item Service name
-	\item Image the service is created from
-	\item The mode of the service. \texttt{vip} - Virtual IP, the service is assigned an IP address and will distribute the requests to the replicated tasks.
-	\item The number of replicas of the service. Each replica represents a task in the swarm.
-	\item Last updated
-\end{itemize}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{service_card_view.png}
-	\caption{Services card view}
+	\caption{Service Card View}
 \end{figure}
 
-When clicking on a Service Card the following additional information will be displayed:
+\subsection{Stacks}
+The concept of a Stack is the core feature of Docker.
+A Stack describes Services (applications) and how they should be deployed.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{stacks.png}
+	\caption{List of Stacks in the Swarm}
+\end{figure}
+
+\subsubsection{Deploying a Stack}
+Docks allows the user to deploy their own Stack (Application) by uploading
+a Stack file. Pre-configured stacks can also be selected for deployment,
+such as Wordpress, Nginx, and MongoDB. The Stack File should be modified
+to fit the needs of the administrator and the system.
+
+The Stack should be given a unique name to identify it in the system.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{stacks_deploy.png}
+	\caption{Deploying a Wordpress Stack}
+\end{figure}
+
+\subsubsection{Updating a Stack}
+\label{sec:stacks_update}
+
+By uploading a modified Stack file Docker will automatically update the deployed
+Stack to match the Stack file.
+
+Reasons for updating the stack may include:
 \begin{itemize}
-	\tightlist
-	\item Ports the services makes use of
-	\item Tasks associated with the service
-	\item Date Created
+	\item Updating to a new version
+	\item Adding a new application to the Stack
+	\item Changing the port for a running application
+	\item Attaching new volumes to applications for extra storage
+	\item Changing environmental variables used for configuration
 \end{itemize}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{service_card_modal.png}
-	\caption{Services card view}
+	\includegraphics[scale=0.4]{stacks_update.png}
+	\caption{Updating the Docks Web Interface Stack}
 \end{figure}
-
-\subsubsection{Service Operations}
-From the list view you can perform the following operations by clicking on the \texttt{Operations} button:
-\begin{itemize}
-	\tightlist
-	\item Scale the service
-	\item Update the service
-	\item View the service logs
-	\item Remove the service from the swarm
-\end{itemize}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.4]{service_list_operations.png}
-	\caption{Service list operations}
-\end{figure}
-
-You can scale the service to change the number of replicas (tasks) of the service to run distribute on the swarm.
-This is useful if the service needs more resources to handle more requests.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.4]{service_list_scale.png}
-	\caption{Service list operations}
-\end{figure}
-
-The service name and mode can be changed under the \texttt{Update} tab
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.4]{service_list_update.png}
-	\caption{Service list operations}
-\end{figure}
-
-The service log can be viewed under the \texttt{Log} tab. This is an aggregate log for all the tasks
-associated with the service.
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.4]{service_list_log.png}
-	\caption{Service list operations}
-\end{figure}
-
-\subsection{Volumes}
-
-The volumes list view will display the following information when expanded:
-\begin{itemize}
-	\tightlist
-	\item Driver the volume is using.
-	\item Where the volume is mounted on the host
-	\item Scope of the volume. Can be local or swarm wide
-	\item Optional labels
-	\item Further options
-	\item Date created
-\end{itemize}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.4]{volume_list.png}
-	\caption{Volume list view, with an expanded item}
-\end{figure}
-
-The volumes card view will display the following information:
-\begin{itemize}
-	\tightlist
-	\item Date created
-	\item Driver the volume is using.
-	\item Where the volume is mounted on the host
-\end{itemize}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.4]{volume_card_view.png}
-	\caption{Volume list view, with an expanded item}
-\end{figure}
-
 
 \subsection{Updating Docks}
-Docks can be updated by running \texttt{sudo docker-compose pull} and then
-\texttt{docker-compose up --force-recreate} in the \texttt{docks} cloned repository
+Once Docks is deployed, it can be updated as described in \nameref{sec:stacks_update}
 
+Alternatively the respective Stack file can be modified locally as deployed using
+\texttt{sudo docker stack deploy -c docker-compose.yml docks}
 
 \section{Troubleshooting}
 \subsection{Error: bind: address already in use}
