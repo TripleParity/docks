@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
+<!-- AUTHORS
+
+Docker Logo
+Ketan Padegaonkar (https://github.com/ketan)
+https://github.com/gocd-contrib/docker-elastic-agents/blob/3bbb2df9ca9154cf391496ed638ca563ba67ea61/src/main/resources/docker-plain.svg
+
+Server Icon
+https://www.svgrepo.com/svg/29744/servers
+
+Devices Icon
+https://www.svgrepo.com/svg/842/devices
+-->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
