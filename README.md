@@ -37,21 +37,17 @@ private and public keys.
 - <a href="https://tripleparity.github.io/docs-bin/testing-policy.pdf" target="_blank">Testing Policy</a>
 
 ## Getting Started
-1. <a href="https://docs.docker.com/install/" target="_blank">Install Docker</a>
-2. Clone `https://github.com/TripleParity/docks.git` and `cd` into `docks`
-3. Run `sudo docker-compose pull` to download the required images
-4. Run `sudo docker-compose up -d --force-recreate` to start the Docks stack
-   - Note: This might take a while as Docker has to download a large amount of data
-   - This will start the **Docks API** on port `8080` and the **Docks UI** on port `4200`.
-5. Initialise a swarm using `sudo docker swarm init`
-6. Deploy the demo stack to the swarm using `sudo docker stack deploy -c docker-compose-nginx.yml nginx-demo`
-   - This will start 1 service with 3 tasks on port `8081`. You can view them at <a href="http://127.0.0.1:8081" target="_blank">http://127.0.0.1:8081</a>
-   - The request will be balanced between the three tasks
-7. Browse to <a href="http://127.0.0.1:4200" target="_blank">http://127.0.0.1:4200</a> to access the web interface.
-   - For more information see the <a href="https://tripleparity.github.io/docs-bin/user-manual.pdf" target="_blank">User Manual</a>
-8. To stop the running services run the following commands:
-   - `sudo docker-compose down -v`
-   - `sudo docker stack rm nginx-demo`
+1. Install <a href="https://docs.docker.com/install/" target="_blank">Docker</a> 17.06.2-ce or higher
+2. Install <a href="https://docs.docker.com/compose/install/" target="_blank">Docker Compose</a>
+3. Create a Swarm using `sudo docker swarm init`
+4. Clone `https://github.com/TripleParity/docks.git`
+5. Run `sudo docker-compose pull` to download the required images
+6. Run `sudo docker stack deploy -c docker-compose.yml docks` to deploy Docks
+7. Run `sudo docker stack deploy -c docker-compose-nginx.yml demo` to deploy a sample application
+8. Browse to <a href="http://127.0.0.1:4200" target="_blank">http://127.0.0.1:4200</a> to view the Docks web interface
+9. To remove Docks from the system run the following commands:
+   - `sudo docker stack rm docks`
+   - `sudo docker stack rm demo`
 
 ## The TripleParity Team
 | Team Member | Team Member | Team Member |
