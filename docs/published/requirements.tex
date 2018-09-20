@@ -119,23 +119,9 @@ web user interface. It is assumed these users know the basic \docker
 terminology and can learn from the \docker documentation.
 
 \subsection{Subsystems}
+% TODO(egeldenhuys): Continue here...
 
-% ----- Continue here
-
-\section{Overall Description}
-\subsection{Product Perspective}
-To understand the purpose of Docks and the benefits it provides we first need to describe what Docker is.
-
-\begin{quotation}
-	Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications, whether on laptops, data center VMs, or the cloud.
-
-	- docker.com
-\end{quotation}
-
-While it is possible to manage a Docker Swarm using the provided Command Line Interface, it requires experience and access to a terminal. Docks will make it possible for graphical interface orientated users to manage a Docker Swarm.
-
-\subsection{Product Functions}
-A high level summary of the required functions provided by the graphical user interface.
+The Docks system consists of two main subsystems. The Docks API Server and the Docks UI.
 
 \begin{itemize}
 	\item All management and view operations require authentication and the correct authorization
@@ -153,18 +139,16 @@ A high level summary of the required functions provided by the graphical user in
 	\item Deploy images from a private repository
 \end{itemize}
 
-\section{External Interface Requirements}
-\subsection{Software Interfaces}
-Since the frontend cannot securely interface with the Docker API, an intermediate interface will be developed (Docks API). The Docks API will communicate between the frontend (Docks-UI) and the Docker API. The Docks API will provide a simplified interface for interacting with the Docker API.
+\subsubsection{Docks API Server}
+The Docks API Server acts as a middleman between the UI and the Docker API
+running on the Manager Node. The Docks API also adds a layer of authentication
+and session management over the Docker API.
 
-\section{System Features}
-\subsection{Authentication and Authorization}
-\subsubsection{Description}
-Due to the power the Docks system exposes only Authorized users should be able to use the system.
-Resources will be managed by Teams. Account roles are assigned in the context of a team, i.e A
-user can be a Guest in one team and a Super User in another team.
+\subsubsection{Docks UI}
+Docks UI is the web interface for managing the Docker Swarm through the Docks API. 
+It consumes the API provided by the Docks API server.
 
-\subsubsection{Functional Requirements}
+\subsection{Specific Requirements}
 
 \begin{itemize}
 	\item R1.1 The system shall allow an authorized user to interact with the Docks API
@@ -211,11 +195,7 @@ user can be a Guest in one team and a Super User in another team.
 	      \end{itemize}
 \end{itemize}
 
-\subsection{Docker Swarm Management}
-\subsubsection{Description}
-Docks needs to provide features for managing the Docker Swarm. While it is already possible to fully mange the Docker Swarm using the Command Line Interface, Docks will provide a simplified web interface.
-
-\subsubsection{Functional Requirements}
+\subsubsection{Docker Swarm Management Functions}
 \begin{itemize}
 	\item R2.1 The system shall display all nodes in the swarm.
 	\item R2.2 The system shall display all services running in the swarm.
@@ -246,17 +226,16 @@ Docks needs to provide features for managing the Docker Swarm. While it is alrea
 \end{itemize}
 
 \section{Architecture}
-\subsection{Subsystems}
-The Docks system consists of two main subsystems. The Docks API Server and the Docks UI.
+\subsection{Interfaces}
+\subsubsection{Software Interfaces}
+Since the frontend cannot securely interface with the Docker API,
+an intermediate interface will be developed (Docks API).
+The Docks API will communicate between the frontend (Docks-UI) and
+the Docker API. The Docks API will provide a simplified interface for
+interacting with the Docker API.
 
-\subsubsection{Docks API Server}
-The Docks API Server acts as a middleman between the UI and the Docker API running on the Manager Node. The Docks API also adds a layer of authentication and session management over the Docker API.
 
-\subsubsection{Docks UI}
-Docks UI is the web interface for managing the Docker Swarm through the Docks API. It consumes the API provided by the Docks API server.
-
-
-\subsection{Deployment Diagram}
+\subsection{System Configuration}
 The Deployment diagram shows the architecture from the device perspective.
 
 \begin{figure}[H]
@@ -274,8 +253,16 @@ The Deployment diagram shows the database architecture for the Docks API system
 	\caption{ERD diagram for the Docks API database}
 \end{figure}
 
-\subsection{Architectural Structure}
-The User Interface uses the Model View Controller architecture. Nodes and Containers have a data model. The user interacts with the view to manipulate the data model. The view is updated when the data model retrieves data using an N-Tier architecture. The 3-Tier architecture can be seen by the actor interacting with the view, the request is then delegated to the models, which in turn communicate with other objects to retrieve and set the required data from the Docker API server and Docker Swarm.
+\subsection{Architectural Styles}
+% TODO: Clarify this section
+The User Interface uses the Model View Controller architecture.
+Nodes and Containers have a data model.
+The user interacts with the view to manipulate the data model.
+The view is updated when the data model retrieves data using an N-Tier architecture.
+The 3-Tier architecture can be seen by the actor interacting with the view,
+the request is then delegated to the models, which in turn
+communicate with other objects to retrieve and set the required data from
+the Docker API server and Docker Swarm.
 
 \begin{figure}[h]
 	\centering
