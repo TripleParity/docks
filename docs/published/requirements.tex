@@ -5,42 +5,131 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
 
-\graphicspath{{images/uml/}}
+\newcommand{\docks}{\textbf{\textcolor{Cyan}{Docks}} }
+\newcommand{\docker}{\textbf{\textcolor{OliveGreen}{Docker}} }
+
+\graphicspath{{images/user-manual/}{images/logo/}{images/uml/}}
 
 %opening
-\title{Requirements and Design - Docks}
-\author{TripleParity}
+\title{\vspace{-1.0cm}Requirements and Design for Docks}
+\author{\textbf{Team}: TripleParity\\
+\textbf{Client}: Compiax\\
+\\
+\textbf{Team Members}\\
+Francois Mentz\\
+Connor Armand du Plooy\\
+Raymond De Vos\\
+Evert Geldenhuys\\
+Anna-Marié Helberg\\
+Paul Wood}
+
 \date{}
 
 \begin{document}
+\begin{figure}[]
+	\includegraphics[scale=0.7]{docks_round_512.png}
+	\centering
+\end{figure}
 
 \maketitle
-
 
 \tableofcontents
 
 \pagebreak
 
-
-\section{Introduction}
+\section{System Overview}
 \subsection{Purpose}
-The purpose of this document is to enumerate the requirements of the project and provide the design of the architecture.
+
+% Why would I want to use Docks? 
+\docker is a tool designed to make it easier to create, deploy and run applications
+using lightweight virtualization. It provides a command line interface (CLI)
+and RESTful API. Maintaining and deploying applications often involve multiple
+people. Providing multiple people access to the \docker CLI requires
+Secure Shell access (SSH) as root to the server running \docker. If the server
+is secure it will only provide SSH access using public/private keys, which
+reduces convenience and restricts access to devices that are SSH capable and
+holds a private key. The \docker API lacks functions which are provided by
+the CLI, so it cannot be used on its own.
+
+The purpose of \docks is to provide a secure web user interface
+for using \docker.
 
 \subsection{Product Scope}
-Docks is a system to visualize a Docker Swarm. It's purpose is to provide a graphical interface to view and manage the Swarm that is easier and quicker to use than the Command Line Interface.
 
-The GUI will be in the form of a Web Application. This provides the benefit of managing the Docker swarm
-using any device that has a web browser.
+% Cool, you showed the limitations of Docker, now what can Docks do for me?
+\docks will provide functionality in three areas
+\begin{enumerate}
+	\item Provide a secure* web user interface that enables using the
+	      essential* functions exposed by the \docker API and CLI.
+	\item Provide a secure API to allow third party services to integrate
+	      with \docks and use \docker
+	\item Send real time notifications to system administrators via Slack about
+	      important events
+\end{enumerate}
+
+\subsection{Definitions, acronyms and abbreviations}
+
+\begin{table}[H]
+	\begin{tabular}{|p{2cm}|p{10cm}|}
+		\hline
+		\docks &  A system to provide a web user interface and API for using \docker \\ \hline
+
+		\docker & Tool designed to make it easier to create, deploy and run applications
+		using lightweight virtualization \\ \hline
+
+		Image & ``A container is launched by running an image.
+		An image is an executable package that includes everything
+		needed to run an application--the code, a runtime, libraries,
+		environment variables, and configuration files.'' \\ \hline
+
+		Container & ``A container is a runtime instance 
+		of an image--what the image becomes in memory when 
+		executed (that is, an image with state, or a user process)'' \\ \hline
+
+	\end{tabular}
+\end{table}
+
+\subsection{UML Domain Model}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{domain-diagram.png}
+	\caption{UML Domain Diagram for the Docks System}
+\end{figure}
+
+\section{Functional Requirements}
+
+\subsection{Users}
+\docks will appeal mainly to software developers and system administrators
+with fundamental understanding of \docker. \docks will allow
+them to deploy new applications with \docker as well as manage existing 
+applications. With the web user interface they will be able to
+update and troubleshoot applications using any web browser. They will
+also be able to give access to the web user interface to other administrators
+for assisting in management. It is assumed this category of users will
+have knowledge on configuring applications to be deployed with \docker
+and the ability to troubleshoot networks and applications.
+
+\docks will also appeal to users that are interested in learning how
+to use \docker. With \docks they can deploy pre-configured applications and
+develop an understanding of the features provided by \docker using the 
+web user interface. It is assumed these users know the basic \docker
+terminology and can learn from the \docker documentation.
+
+\subsection{Subsystems}
+
+% ----- Continue here
 
 \section{Overall Description}
 \subsection{Product Perspective}
 To understand the purpose of Docks and the benefits it provides we first need to describe what Docker is.
 
 \begin{quotation}
-Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications, whether on laptops, data center VMs, or the cloud.
+	Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications, whether on laptops, data center VMs, or the cloud.
 
-- docker.com
+	- docker.com
 \end{quotation}
 
 While it is possible to manage a Docker Swarm using the provided Command Line Interface, it requires experience and access to a terminal. Docks will make it possible for graphical interface orientated users to manage a Docker Swarm.
@@ -79,47 +168,47 @@ user can be a Guest in one team and a Super User in another team.
 
 \begin{itemize}
 	\item R1.1 The system shall allow an authorized user to interact with the Docks API
-	\item R1.2 The system shall allow a user to perform actions only when they are authorized to do so. 
+	\item R1.2 The system shall allow a user to perform actions only when they are authorized to do so.
 	\item R1.3 The system shall provide a global administrative account role without restrictions
 	\item R1.4 The system shall provide Teams
 	\item R1.5 The system shall provide the ability to add Users to Teams
 	\item R1.6 The system shall only allow a User to manage resources that are part of their team.
 	\item R1.7 The system shall provide the following account roles within Teams: (Role (Permissions))
-	\begin{itemize}
-		\item R1.7.1 Team Leader
-		\item R1.7.2 Super User
-		\item R1.7.3 Normal User
-		\item R1.7.4 Guest
-	\end{itemize}
+	      \begin{itemize}
+		      \item R1.7.1 Team Leader
+		      \item R1.7.2 Super User
+		      \item R1.7.3 Normal User
+		      \item R1.7.4 Guest
+	      \end{itemize}
 	\item R1.8 Roles shall have the following permissions:
-		\begin{itemize}
-			\item R1.8.1 Team Leader
-			\begin{itemize}
-				\item Add users to team
-				\item Bind Mount
-				\item Deploy Resources
-			\end{itemize}
-		\item R1.8.2 Super User
-			\begin{itemize}
-				\item Bind Mount
-				\item Deploy Resources
-			\end{itemize}
-		\item R1.8.3 Normal User
-			\begin{itemize}
-				\item Deploy Resources
-			\end{itemize}
-		\item R1.8.4 Guest
-			\begin{itemize}
-				\item Read only access. No access to Inspect
-			\end{itemize}
-		\end{itemize}
+	      \begin{itemize}
+		      \item R1.8.1 Team Leader
+		            \begin{itemize}
+			            \item Add users to team
+			            \item Bind Mount
+			            \item Deploy Resources
+		            \end{itemize}
+		      \item R1.8.2 Super User
+		            \begin{itemize}
+			            \item Bind Mount
+			            \item Deploy Resources
+		            \end{itemize}
+		      \item R1.8.3 Normal User
+		            \begin{itemize}
+			            \item Deploy Resources
+		            \end{itemize}
+		      \item R1.8.4 Guest
+		            \begin{itemize}
+			            \item Read only access. No access to Inspect
+		            \end{itemize}
+	      \end{itemize}
 	\item R1.9 The system shall provide the following user management features to be used by administrative accounts
-		\begin{itemize}
-			\item R1.9.1 Create new user
-			\item R1.9.2 Remove user
-			\item R1.9.3 Update user password
-			\item R1.9.4 Set permissions as stated in R1.3
-		\end{itemize}
+	      \begin{itemize}
+		      \item R1.9.1 Create new user
+		      \item R1.9.2 Remove user
+		      \item R1.9.3 Update user password
+		      \item R1.9.4 Set permissions as stated in R1.3
+	      \end{itemize}
 \end{itemize}
 
 \subsection{Docker Swarm Management}
@@ -131,13 +220,13 @@ Docks needs to provide features for managing the Docker Swarm. While it is alrea
 	\item R2.1 The system shall display all nodes in the swarm.
 	\item R2.2 The system shall display all services running in the swarm.
 	\item R2.3 The system shall display the following attributes about a Task:
-		\begin{itemize}
-			\item R2.3.1 Container Name (if set)
-			\item R2.3.2 Uptime
-			\item R2.3.3 Container ID
-			\item R2.3.4 State of the container (running/stopped)
-			\item R2.3.5 Image used to create the task
-		\end{itemize}
+	      \begin{itemize}
+		      \item R2.3.1 Container Name (if set)
+		      \item R2.3.2 Uptime
+		      \item R2.3.3 Container ID
+		      \item R2.3.4 State of the container (running/stopped)
+		      \item R2.3.5 Image used to create the task
+	      \end{itemize}
 	\item R2.4 The system shall allow a user to stop a running service
 	\item R2.5 The system shall allow a user to start a stopped service
 	\item R2.6 The system shall allow a user to upload a docker-compose file to deploy a Stack
@@ -147,13 +236,13 @@ Docks needs to provide features for managing the Docker Swarm. While it is alrea
 	\item R2.10 The system shall display the volumes on a Node
 	\item R2.11 The system shall be able to deploy images from a private repository
 	\item R2.12 The system shall display the following attributes about a Service
-	\begin{itemize}
-		\item R2.12.1 Service Name
-		\item R2.12.2 Stack (if deployed from Stack)
-		\item R2.12.3 Tasks running in the service
-		\item R2.12.4 State of the Service
-		\item R2.12.5 Image used to create the Service
-	\end{itemize}
+	      \begin{itemize}
+		      \item R2.12.1 Service Name
+		      \item R2.12.2 Stack (if deployed from Stack)
+		      \item R2.12.3 Tasks running in the service
+		      \item R2.12.4 State of the Service
+		      \item R2.12.5 Image used to create the Service
+	      \end{itemize}
 \end{itemize}
 
 \section{Architecture}
@@ -166,14 +255,6 @@ The Docks API Server acts as a middleman between the UI and the Docker API runni
 \subsubsection{Docks UI}
 Docks UI is the web interface for managing the Docker Swarm through the Docks API. It consumes the API provided by the Docks API server.
 
-\subsection{Domain Diagram}
-The Domain diagram gives highlights the relationship between the objects in the system.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{domain-diagram.png}
-	\caption{UML Domain Diagram for the Docks System}
-\end{figure}
 
 \subsection{Deployment Diagram}
 The Deployment diagram shows the architecture from the device perspective.
