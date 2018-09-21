@@ -6,12 +6,14 @@
 \usepackage{hyperref}
 \usepackage{float}
 \usepackage{listings}
+\usepackage{fancyvrb,newverbs,xcolor}
+
 \lstset{
 	language=bash,
 	basicstyle=\ttfamily
 }
 
-\graphicspath{{images/testing-policy/}}
+\graphicspath{{images/testing-policy/}{images/logo/}}
 
 \hypersetup{
 	colorlinks=true,
@@ -21,14 +23,30 @@
 }
 
 %opening
-\title{Testing Policy - Docks}
-\author{TripleParity}
+\title{\vspace{-1.0cm}Requirements and Design for Docks}
+\author{\textbf{Team}: TripleParity\\
+\textbf{Client}: Compiax\\
+\\
+\textbf{Team Members}\\
+Francois Mentz\\
+Connor Armand du Plooy\\
+Raymond De Vos\\
+Evert Geldenhuys\\
+Anna-Marié Helberg\\
+Paul Wood}
+
 \date{}
 
 \begin{document}
+\begin{figure}[]
+	\includegraphics[scale=0.7]{docks_round_512.png}
+	\centering
+\end{figure}
+
 \maketitle
 
 \tableofcontents
+\pagebreak
 
 \section{Testing Process}
 
