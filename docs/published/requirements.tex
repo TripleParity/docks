@@ -16,7 +16,11 @@
 \graphicspath{{images/user-manual/}{images/logo/}{images/uml/}}
 
 %opening
-\title{\vspace{-1.2cm}Requirements and Design for Docks}
+\title{
+	\vspace{-1.5cm}
+	\includegraphics[scale=0.7]{docks_round_512.png}
+	\\[1cm]
+	Requirements and Design for Docks}
 \author{\textbf{Team}: TripleParity\\
 \textbf{Client}: Compiax\\
 \\
@@ -31,10 +35,6 @@ Paul Wood}
 \date{}
 
 \begin{document}
-\begin{figure}[]
-	\includegraphics[scale=0.7]{docks_round_512.png}
-	\centering
-\end{figure}
 
 \maketitle
 
@@ -64,8 +64,8 @@ for using \docker.
 % Cool, you showed the limitations of Docker, now what can Docks do for me?
 \docks will provide functionality in three areas
 \begin{enumerate}
-	\item Provide a secure* web user interface that enables using the
-	      essential* functions exposed by the \docker API and CLI.
+	\item Provide a secure web user interface that enables using the
+	      essential functions exposed by the \docker API and CLI.
 	\item Provide a secure API to allow third party services to integrate
 	      with \docks and use \docker
 	\item Send real time notifications to system administrators via Slack about
@@ -127,16 +127,25 @@ terminology and can learn from the \docker documentation.
 % The constant mentioning of Docks API/UI and Docker API makes
 % it hard to follow.
 
+
+% TODO(egeldenhuys): Make component diagram more vertical so that it
+% will fit nicer
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{component-diagram.png}
+	\caption{Component Diagram for \docks}
+\end{figure}
+
 \docks consists of two projects with distinct purposes:
 \docks UI which is the web user interface running in the web browser
-and \docks API which is the server running on a Manager Node*.
+and \docks API which is the server running on a Manager Node.
 
 \docks UI is responsible for displaying information about applications running
 in \docker, and to provide a convenient interface for sending information
 to \docker via the \docks API.
 
 \docks API is responsible for providing authenticated access to the \docker API.
-It also extends the \docker API by providing the ability to deploy Stacks*
+It also extends the \docker API by providing the ability to deploy Stacks
 and monitor \docker events for sending notifications.
 
 Across these two projects exist a number of subsystems.
