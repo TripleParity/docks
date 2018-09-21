@@ -193,56 +193,90 @@ This will be explained further in \nameref{sec:user_management}
 
 
 \subsection{Tasks}
-A Service consists of Tasks. Tasks can only be viewed - they are managed by Docker
-as part of services
+A service consists of Tasks. Tasks can only be viewed - they are managed by Docker
+as part of services.
 
 \subsubsection{Viewing Tasks}
-The card view displays the following information:
+The table displays the following information:
 \begin{itemize}
 	\tightlist
-	\item ID of the task
-	\item State of the task. 
-	Indicated by the circle and card outline colour. 
+	\item Name of the task
+	\item Image that the task is running
+	\item State of the task.
 	Green means the task is running, 
 	red indicating it has stopped and blue indicating it is preparing
-	\item Node ID the task is running on
-	\item Last Updated
+	\item Node ID on which the task is running
 \end{itemize}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{task_card_view.png}
-	\caption{Task Card View}
+	\includegraphics[scale=0.4]{tasks.png}
+	\caption{Task View}
 \end{figure}
 
-\subsubsection{View Task Logs}
-From the task card view, a task can be clicked to bring up a modal for viewing
-the log associated with the task.
+\subsubsection{Viewing Task Details}
+From the task view, a task can be clicked to open up an new page
+on which details of that specific task is displayed.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{task_card_modal.png}
-	\caption{Task Card Modal}
+	\includegraphics[scale=0.4]{task_details.png}
+	\caption{Task Detail View}
 \end{figure}
 
 \subsection{Services}
-The service list view provides a sortable and searchable table for deployed services.
+A stack consists of services. The service list view provides a sortable 
+and searchable table for deployed services.
+
+\subsubsection{Viewing Services}
+The table displays the following information:
+\begin{itemize}
+	\tightlist
+	\item Name of the service
+	\item Image that the service is running
+	\item Mode of the service
+	\item Replicas of that services running
+	\item Port of which the service is listening
+\end{itemize}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{service_list_view.png}
-	\caption{Service List View}
+	\includegraphics[scale=0.4]{services.png}
+	\caption{Service View}
 \end{figure}
 
+
+\subsubsection{Viewing Service Details}
+From the service view, a service can be clicked to open up an new page
+on which details of that specific service are displayed.
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{service_card_view.png}
-	\caption{Service Card View}
+	\includegraphics[scale=0.4]{service_details.png}
+	\caption{Service Detail View}
+\end{figure}
+
+\subsubsection{Viewing Service Logs}
+From the service detail view, the logs page can be opened to view the 
+complete log for that service.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{services_logs.png}
+	\caption{Service Log View}
 \end{figure}
 
 \subsection{Stacks}
 The concept of a Stack is the core feature of Docker.
 A Stack describes Services (applications) and how they should be deployed.
+
+\subsubsection{Viewing Stack}
+The table displays the following information:
+\begin{itemize}
+	\tightlist
+	\item Name of the stack
+	\item Number of services that belongs to the stack 
+\end{itemize}
 
 \begin{figure}[H]
 	\centering
@@ -261,7 +295,7 @@ The Stack should be given a unique name to identify it in the system.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{stacks_deploy.png}
-	\caption{Deploying a Wordpress Stack}
+	\caption{Deploying a Stack}
 \end{figure}
 
 \subsubsection{Updating a Stack}
@@ -281,25 +315,99 @@ Reasons for updating the stack may include:
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{stacks_update.png}
-	\caption{Updating the Docks Web Interface Stack}
+	\includegraphics[scale=0.4]{stacks_edit.png}
+	\caption{Updating a Stack}
+\end{figure}
+
+\subsection{Node Management}
+Docker swarm is a concept that clusters single, separate docker hosts into a single
+virtual docker host. It consists of manager nodes that delegate jobs and load balance between
+worker nodes.
+
+\subsubsection{Viewing Nodes}
+The table displays the following information:
+\begin{itemize}
+	\tightlist
+	\item Name of the nodes
+	\item Engine version of the node
+	\item IP Address of the node
+	\item Availability of the node 
+	Green means the nodes is active, 
+	red indicating it has stopped and blue indicating it is preparing
+	\item Role of the node
+	\item State of the node 
+	Green means the nodes is active, 
+	red indicating it has stopped and blue indicating it is preparing
+	\item Number of CPU's assigned to the node
+	\item Memory assigned to the node
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{nodes.png}
+	\caption{Nodes View}
+\end{figure}
+
+\subsection{Network Management}
+Docker networks allow a user to connect containers with services or
+containers and services to non-Docker workloads.
+
+\subsubsection{Viewing Networks}
+The table displays the following information:
+\begin{itemize}
+	\tightlist
+	\item Name of the network
+	\item Driver assigned to the network
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{networks.png}
+	\caption{Networks View}
+\end{figure}
+
+
+\subsection{Volume Management}
+Volumes are used with persistent data generated and used by Docker containers.
+
+\subsubsection{Viewing Volumes}
+The table displays the following information:
+\begin{itemize}
+	\tightlist
+	\item Name of the volume
+	\item Driver assigned to volume
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{volumes.png}
+	\caption{Volumes View}
+\end{figure}
+
+\subsubsection{Creating Volumes}
+Docks allows the user to create their own volumes. 
+The Volums should be given a unique name and assigned to a driver.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{volumes_create.png}
+	\caption{Deploying a Stack}
 \end{figure}
 
 \subsection{User Management}
 \label{sec:user_management}
+\subsubsection{Viewing Users}
 Only registered users can use Docks. An admin user can create more admin users.
 Currently there exists only admin users, so be sure to trust the person that will
 be using the account.
-
-Users can be created using the Create User Page (Users -> Create):
-
-Passwords can be changed using the Change Password page (Users -> Edit)
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{users.png}
 	\caption{Users}
 \end{figure}
+
+\subsubsection{Creating Users}
+Users can be created.
 
 \begin{figure}[H]
 	\centering
@@ -307,8 +415,30 @@ Passwords can be changed using the Change Password page (Users -> Edit)
 	\caption{Users}
 \end{figure}
 
+\subsubsection{Editing Users}
+Passwords can be changed using the Change Password page (Users -> Edit)
 
-\subsection{Updating Docks}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{users_edit.png}
+	\caption{Users}
+\end{figure}
+
+\subsection{Webhooks Management}
+Webhooks make it easy for our application to communicate 
+flexibly with external services (such as slack). This allows us to 
+generate slack notifications
+
+\subsubsection{Creating Webhooks}
+This pages allows you create webhooks.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{webhooks.png}
+	\caption{Webhooks Creation}
+\end{figure}
+
+\section{Updating Docks}
 Once Docks is deployed, it can be updated as described in \nameref{sec:stacks_update}
 
 Alternatively the respective Stack file can be modified locally as deployed using
