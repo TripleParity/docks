@@ -1,49 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>10</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>180</y>
-      <w>480</w>
-      <h>370</h>
-    </coordinates>
-    <panel_attributes>lt=.
-User Interface</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>50</x>
-      <y>400</y>
-      <w>400</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;service&gt;&gt;
-Docks API Service</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>50</x>
-      <y>480</y>
-      <w>400</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;interface&gt;&gt;
-Browser Network Interface</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>0</x>
-      <y>600</y>
-      <w>480</w>
-      <h>260</h>
+      <x>256</x>
+      <y>432</y>
+      <w>384</w>
+      <h>208</h>
     </coordinates>
     <panel_attributes>lt=.
 Docks API Server</panel_attributes>
@@ -52,10 +16,10 @@ Docks API Server</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>50</x>
-      <y>640</y>
-      <w>400</w>
-      <h>50</h>
+      <x>296</x>
+      <y>464</y>
+      <w>320</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Network Interface</panel_attributes>
@@ -64,10 +28,10 @@ Network Interface</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>150</x>
-      <y>720</y>
-      <w>200</w>
-      <h>40</h>
+      <x>376</x>
+      <y>528</y>
+      <w>160</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>Docks API Server</panel_attributes>
     <additional_attributes/>
@@ -75,10 +39,10 @@ Network Interface</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>10</x>
-      <y>790</y>
-      <w>200</w>
-      <h>40</h>
+      <x>264</x>
+      <y>584</y>
+      <w>160</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>Database</panel_attributes>
     <additional_attributes/>
@@ -86,9 +50,20 @@ Network Interface</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>260</x>
-      <y>790</y>
-      <w>200</w>
+      <x>464</x>
+      <y>584</y>
+      <w>160</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Docker API</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>464</x>
+      <y>688</y>
+      <w>160</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>Docker API</panel_attributes>
@@ -97,21 +72,10 @@ Network Interface</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>260</x>
-      <y>950</y>
-      <w>200</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>Docker API</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>0</x>
-      <y>910</y>
-      <w>480</w>
-      <h>120</h>
+      <x>256</x>
+      <y>656</y>
+      <w>384</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=.
 Docker Swarm</panel_attributes>
@@ -120,10 +84,21 @@ Docker Swarm</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>440</y>
-      <w>30</w>
-      <h>60</h>
+      <x>528</x>
+      <y>384</y>
+      <w>24</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>448</x>
+      <y>496</y>
+      <w>24</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -131,21 +106,10 @@ Docker Swarm</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
-      <y>520</y>
-      <w>30</w>
-      <h>140</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>240</x>
-      <y>680</y>
-      <w>30</w>
-      <h>60</h>
+      <x>376</x>
+      <y>552</y>
+      <w>24</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -153,10 +117,10 @@ Docker Swarm</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>150</x>
-      <y>750</y>
-      <w>30</w>
-      <h>60</h>
+      <x>488</x>
+      <y>552</y>
+      <w>24</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -164,157 +128,21 @@ Docker Swarm</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>290</x>
-      <y>750</y>
-      <w>30</w>
-      <h>60</h>
+      <x>544</x>
+      <y>608</y>
+      <w>24</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>360</x>
-      <y>820</y>
-      <w>30</w>
-      <h>150</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLActor</id>
-    <coordinates>
-      <x>230</x>
-      <y>0</y>
-      <w>60</w>
-      <h>110</h>
-    </coordinates>
-    <panel_attributes>User</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>250</x>
-      <y>90</y>
-      <w>130</w>
-      <h>150</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>110.0;130.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>120</x>
-      <y>90</y>
-      <w>160</w>
-      <h>150</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;130.0;140.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>350</x>
-      <y>360</y>
-      <w>30</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>120</x>
-      <y>360</y>
-      <w>30</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>50</x>
-      <y>220</y>
-      <w>170</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;view&gt;&gt;
-Container View</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>120</x>
-      <y>260</y>
-      <w>30</w>
-      <h>80</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-&gt;</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>50</x>
-      <y>320</y>
-      <w>170</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;model&gt;&gt;
-Container Model</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>350</x>
-      <y>260</y>
-      <w>30</w>
-      <h>80</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-&gt;</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>280</x>
-      <y>320</y>
-      <w>170</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;model&gt;&gt;
-Node Model</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>280</x>
-      <y>220</y>
-      <w>170</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;view&gt;&gt;
-Node View</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>520</x>
-      <y>180</y>
-      <w>480</w>
-      <h>370</h>
+      <x>256</x>
+      <y>112</y>
+      <w>384</w>
+      <h>296</h>
     </coordinates>
     <panel_attributes>lt=.
 User Interface</panel_attributes>
@@ -323,10 +151,10 @@ User Interface</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>570</x>
-      <y>400</y>
-      <w>400</w>
-      <h>50</h>
+      <x>296</x>
+      <y>288</y>
+      <w>320</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;service&gt;&gt;
 Docks API Service</panel_attributes>
@@ -335,10 +163,10 @@ Docks API Service</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>570</x>
-      <y>480</y>
-      <w>400</w>
-      <h>50</h>
+      <x>296</x>
+      <y>352</y>
+      <w>320</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Browser Network Interface</panel_attributes>
@@ -347,10 +175,10 @@ Browser Network Interface</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>760</x>
-      <y>440</y>
-      <w>30</w>
-      <h>60</h>
+      <x>448</x>
+      <y>320</y>
+      <w>24</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -358,10 +186,10 @@ Browser Network Interface</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>570</x>
-      <y>220</y>
-      <w>400</w>
-      <h>50</h>
+      <x>304</x>
+      <y>144</y>
+      <w>120</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;view&gt;&gt;
 Component Views</panel_attributes>
@@ -370,103 +198,10 @@ Component Views</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>570</x>
-      <y>310</y>
-      <w>400</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;model&gt;&gt;
-Data Models</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>760</x>
-      <y>260</y>
-      <w>30</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-&gt;</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>760</x>
-      <y>350</y>
-      <w>30</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-&gt;</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1030</x>
-      <y>180</y>
-      <w>480</w>
-      <h>370</h>
-    </coordinates>
-    <panel_attributes>lt=.
-User Interface</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1080</x>
-      <y>400</y>
-      <w>400</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;service&gt;&gt;
-Docks API Service</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1080</x>
-      <y>480</y>
-      <w>400</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;interface&gt;&gt;
-Browser Network Interface</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1270</x>
-      <y>440</y>
-      <w>30</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1090</x>
-      <y>220</y>
-      <w>150</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;view&gt;&gt;
-Component Views</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1200</x>
-      <y>310</y>
-      <w>150</w>
-      <h>50</h>
+      <x>392</x>
+      <y>216</y>
+      <w>120</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;model&gt;&gt;
 Data Models</panel_attributes>
@@ -475,10 +210,10 @@ Data Models</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1310</x>
-      <y>220</y>
-      <w>180</w>
-      <h>50</h>
+      <x>480</x>
+      <y>144</y>
+      <w>144</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;controller&gt;&gt;
 Component Controller</panel_attributes>
@@ -487,10 +222,10 @@ Component Controller</panel_attributes>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>1260</x>
-      <y>40</y>
-      <w>60</w>
-      <h>110</h>
+      <x>440</x>
+      <y>0</y>
+      <w>48</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>User</panel_attributes>
     <additional_attributes/>
@@ -498,10 +233,10 @@ Component Controller</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1310</x>
-      <y>90</y>
-      <w>110</w>
-      <h>150</h>
+      <x>480</x>
+      <y>40</y>
+      <w>88</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>90.0;130.0;10.0;10.0</additional_attributes>
@@ -509,10 +244,10 @@ Component Controller</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1150</x>
-      <y>90</y>
-      <w>130</w>
-      <h>150</h>
+      <x>352</x>
+      <y>40</y>
+      <w>104</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>110.0;10.0;10.0;130.0</additional_attributes>
@@ -520,10 +255,10 @@ Component Controller</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1340</x>
-      <y>260</y>
-      <w>70</w>
-      <h>90</h>
+      <x>504</x>
+      <y>176</y>
+      <w>56</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;70.0;50.0;10.0</additional_attributes>
@@ -531,10 +266,10 @@ Component Controller</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1170</x>
-      <y>260</y>
-      <w>70</w>
-      <h>70</h>
+      <x>368</x>
+      <y>176</y>
+      <w>56</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;50.0</additional_attributes>
@@ -542,10 +277,10 @@ Component Controller</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1400</x>
-      <y>260</y>
-      <w>30</w>
-      <h>160</h>
+      <x>552</x>
+      <y>176</y>
+      <w>24</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;</panel_attributes>
     <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>

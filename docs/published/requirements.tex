@@ -71,6 +71,7 @@ for using \docker.
 
 \subsection{Definitions, acronyms and abbreviations}
 
+% TODO(egeldenhuys): More definitions
 \begin{table}[H]
 	\begin{tabular}{|p{2cm}|p{10cm}|}
 		\hline
@@ -119,7 +120,28 @@ web user interface. It is assumed these users know the basic \docker
 terminology and can learn from the \docker documentation.
 
 \subsection{Subsystems}
-% TODO(egeldenhuys): Continue here...
+\docks consists of two projects with distinct purposes:
+\docks UI which is the web user interface running in the web browser
+and \docks API which is the server running on a Manager Node*.
+
+\docks UI is responsible for displaying information about applications running
+in \docker, and to provide a convenient interface for sending information
+to \docker via the \docks API.
+
+\docks API is responsible for providing authenticated access to the \docker API.
+It also extends the \docker API by providing the ability to deploy Stacks*
+and monitor \docker events for sending notifications.
+
+Across these two projects exist a number of subsystems
+
+\subsubsection{Authentication}
+The authentication subsystem is responsible for authenticating
+and authorizing users as well as managing (create, edit, delete) user accounts.
+
+\subsubsection{Webhooks and Docker Events}
+This subsystem is responsible for managing (create, edit, delete) webhooks.
+It interfaces with the Docker API to listen for events and send relevant
+date to the stored webhooks. The
 
 The Docks system consists of two main subsystems. The Docks API Server and the Docks UI.
 
