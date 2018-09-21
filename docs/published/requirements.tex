@@ -16,7 +16,7 @@
 \graphicspath{{images/user-manual/}{images/logo/}{images/uml/}}
 
 %opening
-\title{\vspace{-1.0cm}Requirements and Design for Docks}
+\title{\vspace{-1.2cm}Requirements and Design for Docks}
 \author{\textbf{Team}: TripleParity\\
 \textbf{Client}: Compiax\\
 \\
@@ -123,6 +123,10 @@ web user interface. It is assumed these users know the basic \docker
 terminology and can learn from the \docker documentation.
 
 \subsection{Subsystems}
+% TODO(egeldenhuys): Make this section easier to read.
+% The constant mentioning of Docks API/UI and Docker API makes
+% it hard to follow.
+
 \docks consists of two projects with distinct purposes:
 \docks UI which is the web user interface running in the web browser
 and \docks API which is the server running on a Manager Node*.
@@ -239,7 +243,7 @@ from \docks UI such as deploying an application and viewing its state.
 	\item The system shall provide meaningful error message to the user
 \end{enumerate}
 
-\section{Architecture}
+\section{System}
 \subsection{Interfaces}
 \subsubsection{Software Interfaces}
 Since the frontend cannot securely interface with the Docker API,
@@ -258,17 +262,9 @@ The Deployment diagram shows the architecture from the device perspective.
 	\caption{UML Deployment Diagram for the Docks System}
 \end{figure}
 
-\subsection{ERD Diagram}
-The Deployment diagram shows the database architecture for the Docks API system
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{erd.png}
-	\caption{ERD diagram for the Docks API database}
-\end{figure}
-
 \subsection{Architectural Styles}
 % TODO: Clarify this section
+
 The User Interface uses the Model View Controller architecture.
 Nodes and Containers have a data model.
 The user interacts with the view to manipulate the data model.
