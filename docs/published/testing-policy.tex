@@ -99,7 +99,7 @@ Images can be viewed at \url{https://hub.docker.com/u/tripleparity/}
 	\caption{Screenshot of Docker Cloud Build History}
 \end{figure}
 
-\subsection{Docker UI}
+\subsection{Docks UI}
 
 \subsubsection{tslint}
 Inside of the UI we aditionally use tslint, protractor and karma for testing.
@@ -138,4 +138,33 @@ When a commit is made to a branch, these tests are also run.
 Protractor is an end-to-end test framework. Tests are run in a browser which automatically interacts
 with the page as a user would
 
+\subsection{Docks API}
+
+\subsubsection{eslint}
+eslint is essentially the same as tslint but for javascript.
+
+\subsubsection{jest}
+jest is a javascript testing framework.
+It has some nice features such as instant feedback meaning
+failed tests run first. This means we can easily tend to issues.
+
+Jest is used in the backend to run tests on the api itself.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{jest.png}
+	\caption{Screenshot of jest test}
+\end{figure}
+
+\subsubsection{codeclimate}
+An automated code review tool.
+
+Tests can be seen \href{https://codeclimate.com/github/TripleParity/docks-ui}{here}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{jest.png}
+	\caption{Screenshot of codeclimate score}
+\end{figure}
+
 \end{document}
+
+
