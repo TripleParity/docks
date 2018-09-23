@@ -7,10 +7,8 @@
 \usepackage{hyperref}
 \usepackage[dvipsnames]{xcolor}
 
+% Make it easier to see when we talk about Docks and not Docker
 \newcommand{\docks}{\textcolor{Blue}{Docks} }
-% \newcommand{\docker}{\textcolor{OliveGreen}{Docker} }
-
-% \newcommand{\docks}{Docks }
 \newcommand{\docker}{Docker }
 
 \graphicspath{{images/user-manual/}{images/logo/}{images/uml/}}
@@ -64,8 +62,8 @@ for using \docker.
 % Cool, you showed the limitations of Docker, now what can Docks do for me?
 \docks will provide functionality in three areas
 \begin{enumerate}
-	\item Provide a secure* web user interface that enables using the
-	      essential* functions exposed by the \docker API and CLI.
+	\item Provide a secure web user interface that enables using the
+	      essential functions exposed by the \docker API and CLI.
 	\item Provide a secure API to allow third party services to integrate
 	      with \docks and use \docker
 	\item Send real time notifications to system administrators via Slack about
@@ -137,14 +135,14 @@ terminology and can learn from the \docker documentation.
 
 \docks consists of two projects with distinct purposes:
 \docks UI which is the web user interface running in the web browser
-and \docks API which is the server running on a Manager Node*.
+and \docks API which is the server running on a Manager Node.
 
 \docks UI is responsible for displaying information about applications running
 in \docker, and to provide a convenient interface for sending information
 to \docker via the \docks API.
 
 \docks API is responsible for providing authenticated access to the \docker API.
-It also extends the \docker API by providing the ability to deploy Stacks*
+It also extends the \docker API by providing the ability to deploy Stacks
 and monitor \docker events for sending notifications.
 
 Across these two projects exist a number of subsystems.
@@ -156,7 +154,7 @@ and authorizing users as well as managing (create, edit, delete) user accounts.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{login.png}
+	\includegraphics[scale=0.35]{login.png}
 	\caption{Screenshot of User Login}
 \end{figure}
 
@@ -167,7 +165,7 @@ date to the stored webhooks. The
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{webhooks.png}
+	\includegraphics[scale=0.35]{webhooks.png}
 	\caption{Screenshot of Webhooks}
 \end{figure}
 
@@ -179,37 +177,37 @@ to view and manage \docker stacks.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{stacks.png}
+	\includegraphics[scale=0.35]{stacks.png}
 	\caption{Screenshot of stacks}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{nodes.png}
+	\includegraphics[scale=0.35]{nodes.png}
 	\caption{Screenshot of Nodes}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{volumes.png}
+	\includegraphics[scale=0.35]{volumes.png}
 	\caption{Screenshot of Volumes}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{services.png}
+	\includegraphics[scale=0.35]{services.png}
 	\caption{Screenshot of Services}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{users.png}
+	\includegraphics[scale=0.35]{users.png}
 	\caption{Screenshot of Users}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{networks.png}
+	\includegraphics[scale=0.35]{networks.png}
 	\caption{Screenshot of Network}
 \end{figure}
 
