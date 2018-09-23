@@ -23,7 +23,7 @@
 }
 
 %opening
-\title{\vspace{-1.0cm}Requirements and Design for Docks}
+\title{\vspace{-1.0cm}Requirements and Design for docker}
 \author{\textbf{Team}: TripleParity\\
 \textbf{Client}: Compiax\\
 \\
@@ -75,15 +75,15 @@ During peer reviews the following should be checked:
 \end{figure}
 
 \subsection{Automated Testing and Continuous Integration}
-When a commit is made to the 'docks-ui' repository on GitHub two
+When a commit is made to the 'docker-ui' repository on GitHub two
 processes are started:
 \begin{itemize}
-	\item \href{https://travis-ci.org/TripleParity/docks-ui/branches}{Travis CI} Builds the repository
-	\item \href{https://hub.docker.com/r/tripleparity/docks-ui/builds/}{Docker Hub} builds the repository and creates a Docker Image that can be deployed in production
+	\item \href{https://travis-ci.org/TripleParity/docker-ui/branches}{Travis CI} Builds the repository
+	\item \href{https://hub.docker.com/r/tripleparity/docker-ui/builds/}{Docker Hub} builds the repository and creates a Docker Image that can be deployed in production
 \end{itemize}
 
 \subsubsection{Travis CI}
-The history of test reports for Travis CI can be viewed at \url{https://travis-ci.org/TripleParity/docks-ui/branches}.
+The history of test reports for Travis CI can be viewed at \url{https://travis-ci.org/TripleParity/docker-ui/branches}.
 If the build was not successful it will be marked as 'failed' \\
 \\
 Travis CI is used for running tests associated with each repository. \\
@@ -117,7 +117,7 @@ Images can be viewed at \url{https://hub.docker.com/u/tripleparity/}
 	\caption{Screenshot of Docker Cloud Build History}
 \end{figure}
 
-\subsection{Docks UI}
+\subsection{Docker UI}
 The tests for the frontend could briefly be described as a series of steps.
 These tests are run on every commit, and on each pull request. Usually each team
 member will run the tests before comitting to ensure that the build does not break.
@@ -128,9 +128,9 @@ member will run the tests before comitting to ensure that the build does not bre
 	\item Run the internal test cases.
 \end{enumerate}
 
-The test configuration can be viewed at \href{https://github.com/TripleParity/docks-ui/blob/master/karma.conf.js}{here}.
-The tests are inside a variety of files, in particular any file with a keywod "spec" inside \href{https://github.com/TripleParity/docks-ui/tree/master/src/app}{here}.
-The test history is on \href{https://travis-ci.org/TripleParity/docks-ui}{travis}.
+The test configuration can be viewed at \href{https://github.com/TripleParity/docker-ui/blob/master/karma.conf.js}{here}.
+The tests are inside a variety of files, in particular any file with a keywod "spec" inside \href{https://github.com/TripleParity/docker-ui/tree/master/src/app}{here}.
+The test history is on \href{https://travis-ci.org/TripleParity/docker-ui}{travis}.
 
 \subsubsection{tslint}
 Inside of the UI we aditionally use tslint, protractor and karma for testing.
@@ -170,13 +170,29 @@ Protractor is an end-to-end test framework. Tests are run in a browser which aut
 with the page as a user would. We decided to use protractor because it was specifically
 created with Angular ( our front end framework ) in mind.
 
-\subsection{Docks API}
+\subsection{docker API}
 
-The tests are \href{https://github.com/TripleParity/docks-api/tree/master/spec}{here}.
-The test history is on \href{https://travis-ci.org/TripleParity/docks-api}{travis}.
+The tests for the API run in the same way and at the same time, as the front end; Which is to
+say on every commit and pull request. They can also be run manually. First unit
+tests are performed with jasmin, and then integration tests are done with jest.
+
+The tests are \href{https://github.com/TripleParity/docker-api/tree/master/spec}{here}.
+The jasmine tests are \href{https://github.com/TripleParity/docks-api/blob/master/__tests__/api/api_spec.js}{here}.
+The test history is on \href{https://travis-ci.org/TripleParity/docker-api}{travis}.
 
 \subsubsection{Eslint}
 Eslint is essentially the same as tslint but for javascript.
+
+\subsubsection{Jasmine}
+A behaviour driven testing framework. We use it because it 
+does not require any other JavaScript and is easy to write.
+
+\begin{figure}[H]
+ 	\centering
+	\includegraphics[scale=0.5]{jest.png}
+	\caption{Screenshot of jest test}
+\end{figure}
+
 
 \subsubsection{Jest}
 Jest is a javascript testing framework.
@@ -184,19 +200,16 @@ It has some nice features such as instant feedback meaning
 failed tests run first. This means we can easily tend to issues.
 
 Jest is used in the backend to run tests on the api itself.
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{jest.png}
-	\caption{Screenshot of jest test}
-\end{figure}
+
+\pagebreak
 
 \subsubsection{codeclimate}
 An automated code review tool.
 
-Tests can be seen \href{https://codeclimate.com/github/TripleParity/docks-ui}{here}.
+Tests can be seen \href{https://codeclimate.com/github/TripleParity/docker-ui}{here}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{jest.png}
+	\includegraphics[scale=0.5]{codeclimate_api.png}
 	\caption{Screenshot of codeclimate score}
 \end{figure}
 
