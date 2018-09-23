@@ -77,15 +77,17 @@ During peer reviews the following should be checked:
 \end{figure}
 
 \subsection{Automated Testing and Continuous Integration}
-When a commit is made to the 'docker-ui' repository on GitHub two
+When a commit is made to the 'docks-ui' or 'docks-api' repositories on GitHub two
 processes are started:
 \begin{itemize}
-	\item \href{https://travis-ci.org/TripleParity/docker-ui/branches}{Travis CI} Builds the repository
-	\item \href{https://hub.docker.com/r/tripleparity/docker-ui/builds/}{Docker Hub} builds the repository and creates a Docker Image that can be deployed in production
+	\item Travis CI Builds the repository (\url{https://travis-ci.org/TripleParity})
+	\item Docker Cloud builds the repository and creates a Docker Image that can be deployed in production
+	(\url{https://hub.docker.com/u/tripleparity/})
 \end{itemize}
 
 \subsubsection{Travis CI}
-The history of test reports for Travis CI can be viewed at \url{https://travis-ci.org/TripleParity/docker-ui/branches}.
+The history of test reports for Travis CI can be viewed at
+\url{https://travis-ci.org/TripleParity/docks-ui/branches}.
 If the build was not successful it will be marked as 'failed' \\
 \\
 Travis CI is used for running tests associated with each repository. \\
@@ -94,7 +96,7 @@ For the frontend Angular generates a set of tests for each component to verify
 that the component was successfully created. These tests run inside a
 headless (no screen required) Chrome browser.
 
-The backend also has a suite of unit tests that are executed on Travis CI.
+The backend (docks-api) also has a suite of unit tests that are executed on Travis CI.
 
 \begin{figure}[H]
 	\centering
@@ -119,7 +121,7 @@ Images can be viewed at \url{https://hub.docker.com/u/tripleparity/}
 	\caption{Screenshot of Docker Cloud Build History}
 \end{figure}
 
-\subsection{Docker UI}
+\subsection{Docks UI}
 The tests for the frontend could briefly be described as a series of steps.
 These tests are run on every commit, and on each pull request. Usually each team
 member will run the tests before comitting to ensure that the build does not break.
@@ -130,12 +132,13 @@ member will run the tests before comitting to ensure that the build does not bre
 	\item Run the internal test cases.
 \end{enumerate}
 
-The test configuration can be viewed at \href{https://github.com/TripleParity/docker-ui/blob/master/karma.conf.js}{here}.
-The tests are inside a variety of files, in particular any file with a keywod "spec" inside \href{https://github.com/TripleParity/docker-ui/tree/master/src/app}{here}.
-The test history is on \href{https://travis-ci.org/TripleParity/docker-ui}{travis}.
+The \textbf{test configuration} can be viewed at \url{https://github.com/TripleParity/docks-ui/blob/master/karma.conf.js}.
+The \textbf{tests} are inside a variety of files, in particular any file with a keyword "spec"
+inside \url{https://github.com/TripleParity/docks-ui/tree/master/src/app}.
+The \textbf{test history} is on Travis CI (\url{https://travis-ci.org/TripleParity/docks-ui}.
 
 \subsubsection{tslint}
-Inside of the UI we aditionally use tslint, protractor and karma for testing.
+Inside of the UI we additionally use tslint, protractor and karma for testing.
 \\
 Tslint is a static analysis tool to check typescript code for readability, maintainability and functionality errors.
 It can be customised with custom linting rules and formatters.
@@ -172,15 +175,15 @@ Protractor is an end-to-end test framework. Tests are run in a browser which aut
 with the page as a user would. We decided to use protractor because it was specifically
 created with Angular ( our front end framework ) in mind.
 
-\subsection{docker API}
+\subsection{Docks API}
 
 The tests for the API run in the same way and at the same time, as the front end; Which is to
 say on every commit and pull request. They can also be run manually. First unit
 tests are performed with jasmin, and then integration tests are done with jest.
 
-The tests are \href{https://github.com/TripleParity/docker-api/tree/master/spec}{here}.
-The jasmine tests are \href{https://github.com/TripleParity/docks-api/blob/master/__tests__/api/api_spec.js}{here}.
-The test history is on \href{https://travis-ci.org/TripleParity/docker-api}{travis}.
+The tests are defined in \url{https://github.com/TripleParity/docks-api/tree/master/spec}.
+The jasmine tests are defined in \url{https://github.com/TripleParity/docks-api/blob/master/__tests__/api/api_spec.js}.
+The test history is on Travis CI (\url{https://travis-ci.org/TripleParity/docks-api}.
 
 \subsubsection{Eslint}
 Eslint is essentially the same as tslint but for javascript.
@@ -201,18 +204,18 @@ Jest is a javascript testing framework.
 It has some nice features such as instant feedback meaning
 failed tests run first. This means we can easily tend to issues.
 
-Jest is used in the backend to run tests on the api itself.
+Jest is used in the backend to run tests on the API itself.
 
 \pagebreak
 
-\subsubsection{codeclimate}
+\subsubsection{CodeClimate}
 An automated code review tool.
 
-Tests can be seen \href{https://codeclimate.com/github/TripleParity/docker-ui}{here}.
+Tests can be viewed at \url{https://codeclimate.com/github/TripleParity/docks-api}
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{codeclimate_api.png}
-	\caption{Screenshot of codeclimate score}
+	\caption{Screenshot of CodeClimate score}
 \end{figure}
 
 \end{document}
