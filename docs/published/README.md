@@ -16,5 +16,7 @@ See `.travis.yml`
 Images need to be build from the UMLet files before generating the PDF files.
 
 ```
+cd ~/github/docks/docs/published # The directory of this README
+
 ./scripts/build.sh $(pwd) build
 ```

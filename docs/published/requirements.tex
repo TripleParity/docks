@@ -11,7 +11,10 @@
 \newcommand{\docks}{\textcolor{Blue}{Docks} }
 \newcommand{\docker}{Docker }
 
-\graphicspath{{images/user-manual/}{images/logo/}{images/uml/}}
+% Images in uml/ and user-manual/ have the same names so
+% uml/ has not been included here. Instead images/ is included
+% so they can be referenced with uml/image.png
+\graphicspath{{images/user-manual/}{images/logo/}{images/umlet/}{images/}}
 
 %opening
 \title{
@@ -163,7 +166,7 @@ and authorizing users as well as managing (create, edit, delete) user accounts.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.35]{login.png}
+	\includegraphics[scale=0.5]{uml/login.png}
 	\caption{Screenshot of User Login}
 \end{figure}
 
@@ -174,7 +177,7 @@ data to the stored WebHooks.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.35]{webhooks.png}
+	\includegraphics[scale=0.5]{uml/webhooks.png}
 	\caption{Screenshot of WebHooks}
 \end{figure}
 
@@ -186,37 +189,37 @@ to view and manage \docker stacks.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.35]{stacks.png}
+	\includegraphics[scale=0.5]{uml/stacks.png}
 	\caption{Screenshot of stacks}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.35]{nodes.png}
+	\includegraphics[scale=0.5]{uml/nodes.png}
 	\caption{Screenshot of Nodes}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.35]{volumes.png}
+	\includegraphics[scale=0.5]{uml/volumes.png}
 	\caption{Screenshot of Volumes}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.35]{services.png}
+	\includegraphics[scale=0.5]{uml/services.png}
 	\caption{Screenshot of Services}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.35]{users.png}
+	\includegraphics[scale=0.5]{uml/users.png}
 	\caption{Screenshot of Users}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.35]{networks.png}
+	\includegraphics[scale=0.5]{uml/networks.png}
 	\caption{Screenshot of Network}
 \end{figure}
 
