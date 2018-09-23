@@ -6,12 +6,14 @@
 \usepackage{hyperref}
 \usepackage{float}
 \usepackage{listings}
+\usepackage{fancyvrb,newverbs,xcolor}
+
 \lstset{
 	language=bash,
 	basicstyle=\ttfamily
 }
 
-\graphicspath{{images/testing-policy/}}
+\graphicspath{{images/testing-policy/}{images/logo/}}
 
 \hypersetup{
 	colorlinks=true,
@@ -21,14 +23,32 @@
 }
 
 %opening
-\title{Testing Policy - Docks}
-\author{TripleParity}
+\title{
+	\vspace{-1.5cm}
+	\includegraphics[scale=0.7]{docks_round_512.png}
+	\\[1cm]
+	Testing Policy for Docks
+}
+
+\author{\textbf{Team}: TripleParity\\
+\textbf{Client}: Compiax\\
+\\
+\textbf{Team Members}\\
+Francois Mentz\\
+Connor Armand du Plooy\\
+Raymond De Vos\\
+Evert Geldenhuys\\
+Anna-Marié Helberg\\
+Paul Wood}
+
 \date{}
 
 \begin{document}
+
 \maketitle
 
 \tableofcontents
+\pagebreak
 
 \section{Testing Process}
 
@@ -99,4 +119,72 @@ Images can be viewed at \url{https://hub.docker.com/u/tripleparity/}
 	\caption{Screenshot of Docker Cloud Build History}
 \end{figure}
 
+\subsection{Docks UI}
+
+\subsubsection{tslint}
+Inside of the UI we aditionally use tslint, protractor and karma for testing.
+\\
+Tslint is a static analysis tool to check typescript code for readability, maintainability and functionality errors.
+It can be customised with custom linting rules and formatters.
+This can help catch type errors in the code.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{tslint_error.png}
+	\caption{Screenshot of tslint linting}
+\end{figure}
+
+In the above example an array of numbers is mistakenly assigned to an array of Volumes. 
+The linter clearly highlights this as a problem.
+
+\pagebreak
+
+\subsubsection{karma}
+Karma is a tool which creates easy testing environments for developers; It's main goal 
+is to give developers instant feedback about their test cases.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{karma.png}
+	\caption{Screenshot of karma config}
+\end{figure}
+
+In particular we run a headless instance of chrome with all extensions
+disabled to test our code; Istanbul is also used to generate a code coverage
+report. The test cases are run only once but can be configured such that the tests
+are run every time a file is changed.
+\\
+When a commit is made to a branch, these tests are also run.
+
+\subsubsection{Protractor}
+Protractor is an end-to-end test framework. Tests are run in a browser which automatically interacts
+with the page as a user would
+
+\subsection{Docks API}
+
+\subsubsection{Eslint}
+Eslint is essentially the same as tslint but for javascript.
+
+\subsubsection{Jest}
+Jest is a javascript testing framework.
+It has some nice features such as instant feedback meaning
+failed tests run first. This means we can easily tend to issues.
+
+Jest is used in the backend to run tests on the api itself.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{jest.png}
+	\caption{Screenshot of jest test}
+\end{figure}
+
+\subsubsection{codeclimate}
+An automated code review tool.
+
+Tests can be seen \href{https://codeclimate.com/github/TripleParity/docks-ui}{here}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{jest.png}
+	\caption{Screenshot of codeclimate score}
+\end{figure}
+
 \end{document}
+
+
