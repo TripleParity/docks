@@ -7,13 +7,14 @@
 \usepackage{hyperref}
 \usepackage[dvipsnames]{xcolor}
 
+% Make it easier to see when we talk about Docks and not Docker
 \newcommand{\docks}{\textcolor{Blue}{Docks} }
-% \newcommand{\docker}{\textcolor{OliveGreen}{Docker} }
-
-% \newcommand{\docks}{Docks }
 \newcommand{\docker}{Docker }
 
-\graphicspath{{images/user-manual/}{images/logo/}{images/uml/}}
+% Images in uml/ and user-manual/ have the same names so
+% uml/ has not been included here. Instead images/ is included
+% so they can be referenced with uml/image.png
+\graphicspath{{images/user-manual/}{images/logo/}{images/umlet/}{images/}}
 
 %opening
 \title{
@@ -78,7 +79,7 @@ for using \docker.
 \begin{table}[H]
 	\begin{tabular}{|p{2cm}|p{10cm}|}
 		\hline
-		\docks &  A system to provide a web user interface and API for using \docker \\ \hline
+		\docks &  A system to provide a web user interface and API for using \docker and managing a \docker swarm \\ \hline
 
 		\docker & Tool designed to make it easier to create, deploy and run applications
 		using lightweight virtualization \\ \hline
@@ -91,6 +92,14 @@ for using \docker.
 		Container & ``A container is a runtime instance 
 		of an image--what the image becomes in memory when 
 		executed (that is, an image with state, or a user process)'' \\ \hline
+		
+		Swarm & A tool to schedule and clump docker nodes into a single virtual machine which is easier to use and maintain. \\ \hline
+		
+		Stack & A group of Docker services that make up an application. \\ \hline
+		
+		Service & A collection of Docker containers of the same images. \\ \hline
+		
+		Nodes & Any virtual or physical machines that run Docker and are part of a swarm. \\ \hline
 
 	\end{tabular}
 \end{table}
@@ -155,10 +164,22 @@ Their specific requirements will be enumerator
 The authentication subsystem is responsible for authenticating
 and authorizing users as well as managing (create, edit, delete) user accounts.
 
-\subsubsection{Webhooks and Docker Events}
-This subsystem is responsible for managing (create, edit, delete) webhooks.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{uml/login.png}
+	\caption{Use case diagram for Login}
+\end{figure}
+
+\subsubsection{WebHooks and Docker Events}
+This subsystem is responsible for managing (create, edit, delete) WebHooks.
 It interfaces with the Docker API to listen for events and send relevant
-date to the stored webhooks. The
+data to the stored WebHooks.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{uml/webhooks.png}
+	\caption{Use case diagram for WebHooks}
+\end{figure}
 
 \subsubsection{Stack API Extension for Docker}
 The Stack API Extension for \docker is part of the \docks API.
@@ -166,8 +187,44 @@ Since \docker lacks an API for managing Stacks, it has to be implemented
 by the \docks API. This will enable \docks UI and third party services
 to view and manage \docker stacks.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{uml/stacks.png}
+	\caption{Use case diagram for Stacks}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{uml/nodes.png}
+	\caption{Use case diagram for Nodes}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{uml/volumes.png}
+	\caption{Use case diagram for  Volumes}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{uml/services.png}
+	\caption{Use case diagram for  Services}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{uml/users.png}
+	\caption{Use case diagram for  Users}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{uml/networks.png}
+	\caption{Use case diagram for Networks}
+\end{figure}
+
 \subsubsection{API Proxy for \docker}
-The API proxy for \docker is part of the \docks API. It provides authenticated
+The API proxy 	for \docker is part of the \docks API. It provides authenticated
 access to the \docker API through the \docks API. The \docker API is not
 exposed directly to the world, rather authenticated users may send
 requests to the \docks API to be transparently forwarded to the
@@ -192,7 +249,7 @@ from \docks UI such as deploying an application and viewing its state.
 	\item The system shall display a list of added WebHooks
 	\item The system shall allow a user to remove a WebHook
 	\item The system shall allow a user to specify the type of events to send to the WebHook
-	\item The system shall monitor all \docker events and send the relevant event data to the respective webhook
+	\item The system shall monitor all \docker events and send the relevant event data to the respective WebHook
 	\item The system shall send a Slack notification to WebHooks that should receive node events
 \end{enumerate}
 

@@ -34,7 +34,7 @@ set -e
 
 sourceDir=$1
 outputDir=$2
-imageOutputDir="images/uml"
+imageOutputDir="images/umlet"
 
 userId=$(id -u)
 groupId=$(id -g)
