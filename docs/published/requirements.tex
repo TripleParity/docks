@@ -167,15 +167,15 @@ and authorizing users as well as managing (create, edit, delete) user accounts.
 	\caption{Screenshot of User Login}
 \end{figure}
 
-\subsubsection{Webhooks and Docker Events}
-This subsystem is responsible for managing (create, edit, delete) webhooks.
+\subsubsection{WebHooks and Docker Events}
+This subsystem is responsible for managing (create, edit, delete) WebHooks.
 It interfaces with the Docker API to listen for events and send relevant
-date to the stored webhooks. The
+data to the stored WebHooks.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.35]{webhooks.png}
-	\caption{Screenshot of Webhooks}
+	\caption{Screenshot of WebHooks}
 \end{figure}
 
 \subsubsection{Stack API Extension for Docker}
@@ -246,7 +246,7 @@ from \docks UI such as deploying an application and viewing its state.
 	\item The system shall display a list of added WebHooks
 	\item The system shall allow a user to remove a WebHook
 	\item The system shall allow a user to specify the type of events to send to the WebHook
-	\item The system shall monitor all \docker events and send the relevant event data to the respective webhook
+	\item The system shall monitor all \docker events and send the relevant event data to the respective WebHook
 	\item The system shall send a Slack notification to WebHooks that should receive node events
 \end{enumerate}
 
