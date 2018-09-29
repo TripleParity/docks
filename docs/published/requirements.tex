@@ -340,11 +340,46 @@ the request is then delegated to the models, which in turn
 communicate with other objects to retrieve and set the required data from
 the Docker API server and Docker Swarm.
 
-\begin{figure}[h]
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[scale=0.4]{architecture-diagram.png}
+% 	\caption{MVC and 3-Tier Architecture diagram for the Docks system}
+% \end{figure}
+
+\subsubsection{Docker Engine}
+
+Docker Engine uses a REST API; It could thus be described as a client-server architecture.
+
+\begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{architecture-diagram.png}
-	\caption{MVC and 3-Tier Architecture diagram for the Docks system}
+	\includegraphics[scale=0.5]{engine-components-flow.png}
+	\caption{Docker Engine Architecture}
 \end{figure}
+
+\subsubsection{Docks-API}
+
+The api is also a client-server based architecture although some functionality such as webhooks and slack integration are event based.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{rest-working.png}
+	\caption{Angular MVC}
+\end{figure}
+
+
+\subsubsection{Docks-UI}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{angular.png}
+	\caption{Angular MVC}
+\end{figure}
+
+The frontend borrows concepts from Angular 5. It is mostly MVC based.
+
+Components are created which represent the views; 
+Controllers are essentially services and models are used in conjunction with services and components.
+
 
 
 \end{document}
