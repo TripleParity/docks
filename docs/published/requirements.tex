@@ -309,6 +309,28 @@ from \docks UI such as deploying an application and viewing its state.
 	\item The system shall provide meaningful error message to the user
 \end{enumerate}
 
+\section{Non-functional Requirements}
+\subsection{Quality}
+Quality requirements entail the reliability and availability of the system. Both are important for our system because Docks allows a company to manage their whole Docker Swarm. In other words, the system must be available so that one can manage the Swarm (and reliabilty for the same reason). 
+
+This will be achieved by having Docks runcompletely offline. Docker also allows you to specify what happens when a service goes down within its respective compose file, for example, to restart the service or kill the service completely.Docks run as a service that is set up to restart on failure which means that Docks will be available most of the time.
+
+To test whether the requirements are met, one can test the uptime but as we run Docks via Docker the reliabilty and availablity are taken of by Docker itself.
+
+\subsection{Safety}
+Safety involves the ability to prevent the system from entering an unwanted state because of an unintended operation. This is important because because if the system enters an unwanted state it can affect the availability or reliability of the system. 
+
+Docks implement path guards to protect the system when a wrong path is entered. It will simply return a 404 error. Docks also implement a confirmation system for all of the actions that can be performed to ensure that accidental deletions or updates are not made to critical services. For example, user input is validated for stacks to prevent them from overriding existing data.
+
+The metric to test the paths can be using Fuzzing. This technique generates different urls within Docks' scope and outputs data such as whether incorrect urls were accepted or correct urls were rejected. The metric for testing whether input is correct would be to apply user testing.
+
+\subsection{Security}
+Security entails protecting the system resources. This is done by authenitcation and different types of users. 
+
+Authentication is achieved by two-factor authenication (which involves scanning a QR Code with your phone) and by using a token-based approach. Not all users have the same privileges in the system and the type is assigned once a user registers and can be updated by the administrator.
+
+Docks applies npm-audit which performs a security review of the system and tell you about the vulnerabilities within your dependencies and how to fix them. User testing can also be performed to verify authentication.
+
 \section{System}
 \subsection{Interfaces}
 \subsubsection{Software Interfaces}
