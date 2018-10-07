@@ -267,6 +267,12 @@ from \docks UI such as deploying an application and viewing its state.
 	\end{enumerate}
 \end{enumerate}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{uml/login-state-diagram.png}
+	\caption{State diagram for user authentication}
+\end{figure}
+
 \subsubsection{Stack API Extension for Docker}
 \begin{enumerate}[label*=R3.\arabic*.]
 	\item The system shall provide the ability to deploy new stacks given the stack name and docker-compose file
@@ -277,6 +283,12 @@ from \docks UI such as deploying an application and viewing its state.
 	\item The system shall not allow a stack to be updated if it does not exist
 	\item The system shall provide the ability to return the services that are part of a given stack
 \end{enumerate}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{uml/deploy-stack-activity-diagram.png}
+	\caption{Activity diagram for deploying stacks using Docks}
+\end{figure}
 
 \subsubsection{API proxy for Docker}
 \begin{enumerate}[label*=R4.\arabic*]
