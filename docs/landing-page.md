@@ -1,34 +1,31 @@
-<p align="center"><img src="https://raw.githubusercontent.com/wiki/TripleParity/docks/images/logo/docks_round_512.png" width="200"></p>
+<div align="center"><img src="https://raw.githubusercontent.com/wiki/TripleParity/docks/images/logo/docks_round_512.png" width="150"></div>
 
 # Docks
 
 A project developed by team TripleParity
 
-<a href="https://app.zenhub.com/workspace/o/tripleparity/docks/boards?repos=126592937,124921284,125188117,124847715,128764372,124747738" target="_blank"> ![ZenHub Badge](https://img.shields.io/badge/Shipping_faster_with-ZenHub-5e60ba.svg?style=flat-square)</a>
+**Docks** provides a secure web user interface for managing a Docker Swarm.
+It allows you to view the status of applications as well as deploy new applications. Docks can also send real-time notifications to Slack in the case of a server failure.
 
-**Docks** provides a simple web interface for managing a Docker Swarm.
-It allows you to view the status of the Swarm and the services running on it.
-You can deploy Stacks and manage Services, Networks and Volumes.
+With **Docks** you can manage a Docker Swarm from any web browser, eliminating the inconvenience of requiring Secure Shell access. Docks also provides extra features that are not exposed by the Docker API.
 
-With **Docks** you can securely manage a Docker Swarm using a
-browser from any device, without the inconvenience of using SSH and managing
-private and public keys.
+## Live Demo
+1. Browse to <a href="http://play-with-docker.com/?stack=https://raw.githubusercontent.com/TripleParity/docks/master/docker-compose-pwd.yml" target="_blank">Play with Docker</a>
+2. Sign in with your <a href="https://docs.docker.com/docker-id" target="_blank">Docker ID</a>
+3. Click 'Start'
+4. Wait until 'Your session is ready!' and then click 'Close' modal
+5. Refresh (if a black terminal is not shown)
+6. Wait until a link with text `4200` is shown. This is the link to Docks UI
+7. Login with username `admin` and password `admin`
+8. The links `9000` and `9001` are for nginx and WordPress respectively
 
-## Quick Links
-- <a href="https://travis-ci.org/TripleParity" target="_blank">Travis CI</a>
-- <a href="https://hub.docker.com/u/tripleparity/" target="_blank">Docker Hub</a>
+
+## Links
 - <a href="https://github.com/TripleParity" target="_blank">GitHub Organisation</a>
-- <a href="https://app.zenhub.com/workspace/o/tripleparity/docks/boards?repos=126592937,124921284,125188117,124847715,128764372,124747738" target="_blank">ZenHub Project Management</a> (Requires GitHub account)
-
-### Repositories
-- <a href="https://github.com/TripleParity/docks" target="_blank">docks</a> Connecting all things related to the project (start here)
-  - <a href="https://travis-ci.org/TripleParity/docks" target="_blank">![Travis branch](https://img.shields.io/travis/TripleParity/docks/master.svg?label="Travis%20CI:%20master")</a>
-- <a href="https://github.com/TripleParity/docks-ui" target="_blank">docks-ui</a> - The web interface for communucating with the Docks API
-  - <a href="https://travis-ci.org/TripleParity/docks-ui" target="_blank">![Travis master branch](https://img.shields.io/travis/TripleParity/docks-ui/master.svg?label="Travis%20CI:%20master")</a>
-  - <a href="https://travis-ci.org/TripleParity/docks-ui" target="_blank">![Travis develop branch](https://img.shields.io/travis/TripleParity/docks-ui/develop.svg?label="Travis%20CI:%20develop")</a>
-- <a href="https://github.com/TripleParity/docks-api" target="_blank">docks-api</a>- The Docks API that runs on the Docker Swarm Manager Node
-  - <a href="https://travis-ci.org/TripleParity/docks-api" target="_blank">![Travis master branch](https://img.shields.io/travis/TripleParity/docks-api/master.svg?label="Travis%20CI:%20master")</a>
-  - <a href="https://travis-ci.org/TripleParity/docks-api" target="_blank">![Travis develop branch](https://img.shields.io/travis/TripleParity/docks-api/develop.svg?label="Travis%20CI:%20develop")</a>
+- <a href="https://hub.docker.com/u/tripleparity/" target="_blank">Docker Hub Organisation</a>
+- <a href="https://travis-ci.org/TripleParity" target="_blank">Travis CI</a>
+- <a href="https://codeclimate.com/github/TripleParity/docks-api" target="_blank">CodeClimate</a> report for docks-api
+- <a href="https://app.zenhub.com/workspace/o/tripleparity/docks-ui/boards?repos=125188117,150871157,126592937,124921284,128764372" target="_blank">ZenHub Project Management</a> (Requires GitHub account)
 
 ### Documentation
 - <a href="https://tripleparity.github.io/docs-bin/requirements.pdf" target="_blank">Requirements and Design</a>
@@ -36,18 +33,11 @@ private and public keys.
 - <a href="https://tripleparity.github.io/docs-bin/user-manual.pdf" target="_blank">User Manual</a>
 - <a href="https://tripleparity.github.io/docs-bin/testing-policy.pdf" target="_blank">Testing Policy</a>
 
-## Getting Started
-1. Install <a href="https://docs.docker.com/install/" target="_blank">Docker</a> 17.06.2-ce or higher
-2. Install <a href="https://docs.docker.com/compose/install/" target="_blank">Docker Compose</a>
-3. Create a Swarm using `sudo docker swarm init`
-4. Clone `https://github.com/TripleParity/docks.git`
-5. Run `sudo docker-compose pull` to download the required images
-6. Run `sudo docker stack deploy -c docker-compose.yml docks` to deploy Docks
-7. Run `sudo docker stack deploy -c docker-compose-nginx.yml demo` to deploy a sample application
-8. Browse to <a href="http://127.0.0.1:4200" target="_blank">http://127.0.0.1:4200</a> to view the Docks web interface
-9. To remove Docks from the system run the following commands:
-   - `sudo docker stack rm docks`
-   - `sudo docker stack rm demo`
+### GitHub Repositories
+- <a href="https://github.com/TripleParity/docks" target="_blank">docks</a> - Connecting all things related to the project (start here)
+- <a href="https://github.com/TripleParity/docks-ui" target="_blank">docks-ui</a> - Docks Web User Interface for Docks
+- <a href="https://github.com/TripleParity/docks-api" target="_blank">docks-api</a> - RESTful API Server for Docks
+- <a href="https://github.com/TripleParity/docker-api-to-compose" target="_blank">docker-api-to-compose</a> - <a href="https://www.npmjs.com/package/docker-api-to-compose" target="_blank">npm</a> package for generating docker-compose.yml files
 
 ## The TripleParity Team
 | Team Member | Team Member | Team Member |
