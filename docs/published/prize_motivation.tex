@@ -1,0 +1,93 @@
+\documentclass[]{article}
+\usepackage[margin=0.9in]{geometry}
+
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Make it easier to see when we talk about Docks and not Docker
+\newcommand{\docks}{\textcolor{Blue}{Docks} }
+\newcommand{\docker}{Docker }
+
+% Images in uml/ and user-manual/ have the same names so
+% uml/ has not been included here. Instead images/ is included
+% so they can be referenced with uml/image.png
+\graphicspath{{images/user-manual/}{images/logo/}{images/umlet/}{images/}}
+
+%opening
+\title{
+	\vspace{-1.5cm}
+	\includegraphics[scale=0.7]{docks_round_512.png}
+	\\[1cm]
+	Prize Motivation for Docks}
+\author{\textbf{Team}: TripleParity\\
+\textbf{Client}: Compiax\\
+\\
+\textbf{Team Members}\\
+Francois Mentz\\
+Connor Armand du Plooy\\
+Raymond De Vos\\
+Evert Geldenhuys\\
+Anna-Marié Helberg\\
+Paul Wood}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\pagebreak
+
+\section{Project Prizes Motivation}
+\subsection{Kindle Technologies - Fit for Purpose}
+
+At the start, we did not quite understand where our project (\docks) would fit in or what purpose it would serve. The client made it clear that they had a valid use for \docks since they heavily rely on \docker for their applications and required specific features not provided by other projects. The initial scope for \docks was a lightweight management interface providing advanced functionality on top of the existing \docker swarm framework and with excellent security. \\
+
+%Dalk moet ons die meer layman se
+\docker is a tool designed to make it easier to create, deploy and run applications
+using lightweight virtualization. It provides a command line interface (CLI)
+and RESTful API. Maintaining and deploying applications often involve multiple
+people. Providing multiple people access to the \docker CLI requires
+Secure Shell access (SSH) as root to the server running \docker. If the server
+is secure it will only provide SSH access using public/private keys, which
+reduces convenience and restricts access to devices that are SSH capable and
+holds a private key. The \docker API lacks functions which are provided by
+the CLI, so it cannot be used on its own. \\
+
+%hierdie het ek by gesit
+The requirements of the problem domain were solved by \docks. Our interface serves as a much simpler way of using \docker than the CLI. But, we also added the extra security that
+was lost when we moved from the CLI to a user interface with the implementation of the two-factor
+authentication. \docks was developed in close collaboration with our client who plans on using it in their live, production Docker swarm environment. \\
+
+Every feature added was added with real-life usage in mind due to our client's experience using Docker. There is a need for a lightweight, drop-in Docker swarm manager with two-factor authentication and a simple, easy to use user interface and we believe that \docks is fit for this purpose.
+
+\subsection{Quant - Most innovative use of open source}
+% We are still 5 words over budget.. not sure where to trim
+\docks is a completely open source project to enhance an existing open source tool and is licensed under the copyleft \textit{GNU General Public License v3.0}. Our project extends the existing \href{https://github.com/docker}{open source Docker platform} by integrating with the \href{https://github.com/docker/swarm}{Docker Swarm} container orchestration project's API to provide advanced functionality.\\
+
+\docks only makes use of fully open source libraries such as \href{https://github.com/angular}{Angular} and \href{https://github.com/nodejs}{Node.js}. All packages used are open source on \href{https://www.npmjs.com/}{NPM}. \\
+
+Apart from ensuring our project is free and open, we have also innovated in the open source space in the form of a new package published by the \docks team. We have identified a limitation in the Docker swarm stack model in that the translation from a swarm specification file to a service running on the swarm is a one-way process. We did not find any existing open source tools that can reverse the translation. This limitation meant that \docks or any similar project could not be easily integrated into an existing swarm.\\
+ 
+To solve this, our team developed, tested and published an independent open source package that can take the machine-specification from \docker and convert it back into a human readable format that can easily be included by existing projects. The package is licensed under the permissive open source \textit{ISC License}. The package can be freely downloaded from NPM \href{https://www.npmjs.com/package/docker-api-to-compose}{(npmjs.com/package/docker-api-to-compose)}. The source code is published on GitHub and can be viewed \href{https://github.com/TripleParity/docker-api-to-compose}{under the TripleParity organisation.}
+
+
+\subsection{Singular - Software Engineering Excellence}
+Software Security was our main focus while we were designing and building \docks.
+Our team structure was peculiar but it was chosen for optimal performance. We adhered to the Scrum 
+framework as much as possible and as such had a scrum master. Two key focus areas were identified from our team members' experiences: frontend and backend. We decided to roughly split our team into two scrum teams; one for each identified focus area. The teams did not work independently and all issues were raised across the entire TripleParity team for discussion. Members of the sub-teams were encouraged to work on other focus areas as well. We discovered that a smaller team working with high cohesion and focussing on one area outperformed a larger team that struggled to collaborate. \\
+
+We spent a lot of effort to ensure our documentation is clear and concise. Due to \docker being a complicated and convoluted project, we made sure users can quickly get a good grasp of \docker concepts from reading our documentation. Clear and strict coding standards were applied and thorough review processes were implemented while developing the system. Our development environment was consistent across our entire team; each member used the same editor (Visual Studio Code) with active syntax linting provided by ESLint. Strict linting resulted in many small bugs being caught and fixed early in the development cycle and consistent styling conventions allowed our code to be easy to read and maintain. A minimum of two team members was required to review and approve pull requests but in practice, every pull request got peer-reviewed by 3 or more developers. This ensured that only high-quality code ended up in our main branches. \\
+
+We used Telegram and Slack as our main methods of communication and we planned and
+managed every issue with the help of Zenhub and Github. Data integrity was ensured through the review process but also with the help of automated continuous testing and integration tools such as  Travis which monitored every push and pull request. A pull request could only be approved if all the tests passed on Travis. This ensured bugs were caught early and subsequently quickly removed before merging with develop / master.
+
+
+\end{document}
