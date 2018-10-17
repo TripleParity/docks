@@ -69,15 +69,14 @@ was lost when we moved from the CLI to a user interface with the implementation 
 authentication.
 
 \subsection{Quant - Most innovative use of open source}
-\docks utilises only open soure software. Docker is completely open source and all
-of the technologies and frameworks we used are also open source. 
+% We are still 5 words over budget.. not sure where to trim
+\docks is a completely open source project to enhance an existing open source tool and is licensed under the copyleft \textit{GNU General Public License v3.0}. Our project extends the existing \href{https://github.com/docker}{open source Docker platform} by adding advanced functionality to the \href{https://github.com/docker/swarm}{Docker Swarm} container orchestration project. \\
 
-%Help met die asseblief
-A member our out group, Evert Geldenhuys, also wrote a package that is freely 
-available to the public community. \docker has the functionality where a compose file
-can be used to generate a stack and services but once the stack has been deployed the 
-information in the compose file cannot be extracted again. Evert wrote a package that
-allows you to generate the compose file from a running stack in the swarm.
+\docks only makes use of fully open source libraries such as \href{https://github.com/angular}{Angular} and \href{https://github.com/nodejs}{Node.js}. All packages used are open source on \href{https://www.npmjs.com/}{NPM}. \\
+
+Apart from ensuring our project is free and open, we have also innovated in the open source space in the form of a new package published by the \docks team. We have identified a limitation in the Docker swarm stack model in that the translation from a swarm specification file to a service running on the swarm is a one-way process. We did not find any existing open source tools that can reverse the translation. This limitation meant that \docks or any similar project could not be easily integrated into an existing swarm.\\
+ 
+To solve this, our team developed, tested and published an independent open source package that can take the machine-specification from \docker and convert it back into a human readable format that can easily be included by existing projects. The package is licensed under the permissive open source \textit{ISC License}. The package can be freely downloaded from NPM \href{https://www.npmjs.com/package/docker-api-to-compose}{(npmjs.com/package/docker-api-to-compose)}. The source code is published on GitHub and can be viewed \href{https://github.com/TripleParity/docker-api-to-compose}{under the TripleParity organisation.}
 
 
 \subsection{Singular - Software Engineering Excellence}
