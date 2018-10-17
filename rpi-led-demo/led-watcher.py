@@ -1,5 +1,3 @@
-print('lel')
-
 from enum import Enum
 from typing import List, Dict
 import sys
@@ -29,15 +27,15 @@ def colourStrToEnum(colourStr):
 # Alternative to above function
 # colour = colourToEnum.get(key, None)
 #
-colourToEnum: Dict[str, Colour] = {
+colourToEnum = {
     'white': Colour.WHITE,
     'red': Colour.RED,
     'green': Colour.GREEN,
     'blue': Colour.BLUE
 }
 
-def findOff(previous: Dict[Colour, bool], current: Dict[Colour, bool]):
-    result: Dict[Colour, bool] = dict()
+def findOff(previous, current):
+    result = dict()
 
     for k, v in previous.items():
         if k not in current:
@@ -45,8 +43,8 @@ def findOff(previous: Dict[Colour, bool], current: Dict[Colour, bool]):
 
     return result
 
-def findOn(previous: Dict[Colour, bool], current: Dict[Colour, bool]):
-    result: Dict[Colour, bool] = dict()
+def findOn(previous, current):
+    result = dict()
 
     for k, v in current.items():
         if k not in previous:
@@ -54,11 +52,11 @@ def findOn(previous: Dict[Colour, bool], current: Dict[Colour, bool]):
 
     return result
 
-def turnOnColour(colour: Colour):
+def turnOnColour(colour):
     print('Turning on: ', colour)
     TODO = 1
 
-def turnOffColour(colour: Colour):
+def turnOffColour(colour):
     print('Turning off: ', colour)
     TODO = 2
 
@@ -67,7 +65,7 @@ def turnOffAllColours():
         print('Turning off: ', k)
         TODO = 3
 
-def handleColourUpdate(prevColours: Dict[Colour, bool], colours: Dict[Colour, bool]):
+def handleColourUpdate(prevColours, colours):
     # Avoid potential flickering by calculating deltas
     turnOn = findOn(prevColours, colours)
     turnOff = findOff(prevColours, colours)
@@ -88,7 +86,7 @@ except:
     print('[ERROR] ', sys.exc_info()[0])
     client = None
 
-prevColours: Dict[Colour, bool] = dict()
+prevColours = dict()
 
 print('Starting LED watcher...')
 
@@ -104,7 +102,7 @@ while True:
             prevColours = dict()
 
         if (containers):
-            colours: Dict[Colour, bool] = dict()
+            colours = dict()
 
             for container in containers:
                 if 'led_colour' in container.labels:
