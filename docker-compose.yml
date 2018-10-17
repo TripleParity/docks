@@ -1,6 +1,16 @@
-version: "3"
+version: '3.3'
 
 services:
+
+  db:
+    image: postgres
+    environment:
+     - POSTGRES_PASSWORD=example
+    volumes:
+      - type: volume
+        source: docks_data
+        target: /var/lib/postgresql/data
+
   api:
     image: tripleparity/docks-api:latest
     volumes:
@@ -17,15 +27,12 @@ services:
       placement:
         constraints: [node.role == manager]
 
-  db:
-    image: postgres
-    environment:
-      - POSTGRES_PASSWORD=example
-
-  docks-ui:
+  ui:
     image: tripleparity/docks-ui:latest
     ports:
       - 4200:80
     environment:
       - DOCKS_API_ADDRESS=http://127.0.0.1:8080
 
+volumes:
+  docks_data:
