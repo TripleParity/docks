@@ -89,7 +89,7 @@ def turnOnColour(colour):
 
 def turnOffColour(colour):
     print('Turning off: ', colour)
-    colourToLed[colour].off()
+    colourToLed[colour].value = 0
 
 def handleColourUpdate(prevColours, colours):
     # Avoid potential flickering by calculating deltas
@@ -118,7 +118,7 @@ prevResponse = 1
 print('Starting LED watcher...')
 
 while True:
-    response = os.system("ping -c 1 " + hostname)
+    response = os.system("ping -c 1 " + hostname + " > /dev/null")
 
     if response == 0:
         # print hostname, 'is up!'
@@ -151,6 +151,7 @@ while True:
 
                     if colour != None:
                         colours[colour] = True
+                        print(colours)
                     else:
                         print('[ERROR] Invalid colour: ' + colourString + ' on ' + container.name)
 
@@ -165,4 +166,4 @@ while True:
             handleColourUpdate(prevColours, dict())
             prevColours = dict()
     
-    time.sleep(1)
+    time.sleep(2)
