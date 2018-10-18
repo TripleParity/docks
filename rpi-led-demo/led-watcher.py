@@ -55,7 +55,7 @@ colourToLed = {
 }
 
 def turnOffAllColours():
-    colourToLed[Colour.WHITE].off()
+    # colourToLed[Colour.WHITE].off()
     colourToLed[Colour.RED].off()
     colourToLed[Colour.GREEN].off()
     colourToLed[Colour.BLUE].off()
@@ -157,6 +157,9 @@ while True:
 
             handleColourUpdate(prevColours, colours)
             prevColours = colours
+        else:
+            handleColourUpdate(prevColours, dict())
+            prevColours = dict()
     else:
         try:
             client = createDockerClient()
