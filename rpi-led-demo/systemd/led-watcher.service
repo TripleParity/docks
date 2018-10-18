@@ -3,7 +3,7 @@ Description=GPIO LED Watcher
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/sh /opt/rpi-led-watcher/start.sh
+ExecStart=/bin/sh /opt/rpi-led-watcher/start.sh
 
 [Install]
 WantedBy=multi-user.target

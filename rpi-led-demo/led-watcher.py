@@ -1,10 +1,14 @@
 from enum import Enum
 from typing import List, Dict
 import sys
+import os
 
 import time
 
 import docker
+from gpiozero import PWMLED
+
+hostname = "10.0.0.2" # Manager
 
 class Colour(Enum):
     WHITE = 18
@@ -34,6 +38,30 @@ colourToEnum = {
     'blue': Colour.BLUE
 }
 
+whiteLed = PWMLED(Colour.WHITE.value)
+redLed = PWMLED(Colour.RED.value)
+greenLed = PWMLED(Colour.GREEN.value)
+blueLed = PWMLED(Colour.BLUE.value)
+
+# whiteLed.value = 0.2
+# redLed.value = 0.5
+# blueLed.value = 0.2
+
+colourToLed = {
+    Colour.WHITE: whiteLed,
+    Colour.RED: redLed,
+    Colour.GREEN: greenLed,
+    Colour.BLUE: blueLed
+}
+
+def turnOffAllColours():
+    colourToLed[Colour.WHITE].off()
+    colourToLed[Colour.RED].off()
+    colourToLed[Colour.GREEN].off()
+    colourToLed[Colour.BLUE].off()
+
+# turnOffAllColours()
+
 def findOff(previous, current):
     result = dict()
 
@@ -54,16 +82,14 @@ def findOn(previous, current):
 
 def turnOnColour(colour):
     print('Turning on: ', colour)
-    TODO = 1
+    if (colour != Colour.GREEN):
+        colourToLed[colour].value = 0.2
+    else:
+        colourToLed[colour].value = 1
 
 def turnOffColour(colour):
     print('Turning off: ', colour)
-    TODO = 2
-
-def turnOffAllColours():
-    for k, v in colourToEnum.items():
-        print('Turning off: ', k)
-        TODO = 3
+    colourToLed[colour].off()
 
 def handleColourUpdate(prevColours, colours):
     # Avoid potential flickering by calculating deltas
@@ -87,15 +113,29 @@ except:
     client = None
 
 prevColours = dict()
+prevResponse = 1
 
 print('Starting LED watcher...')
 
 while True:
+    response = os.system("ping -c 1 " + hostname)
+
+    if response == 0:
+        # print hostname, 'is up!'
+        if prevResponse != 0:
+            turnOnColour(Colour.WHITE)
+    else:
+        # print hostname, 'is down!'
+        if prevResponse == 0:
+            turnOffColour(Colour.WHITE)
+
+    prevResponse = response
+
     if (client):
         containers = None
 
         try:
-            containers = client.containers.list()
+            containers = client.containers.list(filters={'status': 'running'})
         except:
             print('[ERROR] ', sys.exc_info()[0])
             handleColourUpdate(prevColours, dict())
