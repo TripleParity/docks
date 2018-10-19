@@ -1,4 +1,4 @@
-version: "3"
+version: '3.3'
 
 services:
   api:
@@ -11,8 +11,6 @@ services:
       - POSTGRES_PASSWORD=example
     ports:
       - 8080:8080
-    depends_on:
-      - db
     deploy:
       placement:
         constraints: [node.role == manager]
