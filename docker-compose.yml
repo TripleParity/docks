@@ -10,6 +10,9 @@ services:
       - type: volume
         source: docks_data
         target: /var/lib/postgresql/data
+    deploy:
+      placement:
+        constraints: [node.role == manager]
 
   api:
     image: tripleparity/docks-api:latest
@@ -21,8 +24,6 @@ services:
       - POSTGRES_PASSWORD=example
     ports:
       - 8080:8080
-    depends_on:
-      - db
     deploy:
       placement:
         constraints: [node.role == manager]
