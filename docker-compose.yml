@@ -21,6 +21,9 @@ services:
     image: postgres
     environment:
       - POSTGRES_PASSWORD=example
+    deploy:
+      placement:
+        constraints: [node.role == manager]
 
   docks-ui:
     image: tripleparity/docks-ui:latest
